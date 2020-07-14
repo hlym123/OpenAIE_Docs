@@ -1,0 +1,749 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenAIE 启蒙 使用说明文档 &mdash; OpenAIE_Docs OpenAIE documention 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="Welcome to OpenAIE_Docs’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> OpenAIE_Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Enlighten使用</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenAIE 启蒙 使用说明文档</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">入门使用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1. 驱动安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ide">2. 软件安装(IDE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3. 案例测试</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">4. 固件升级</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">板载功能使用教程</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rgb-led">1. RGB LED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#led">2. 白光 LED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3. 蜂鸣器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">4. 按键</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">5. 光照强度传感器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">6. 姿态传感器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">7. 语音识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">8. 液晶显示屏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">9. 摄像头</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">综合测试程序</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">更多案例</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OpenAIE_Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>OpenAIE 启蒙 使用说明文档</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="openaie">
+<h1>OpenAIE 启蒙 使用说明文档<a class="headerlink" href="#openaie" title="永久链接至标题">¶</a></h1>
+<blockquote>
+<div><p>启蒙是OpenAIE系列模块</p>
+</div></blockquote>
+<div class="section" id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>供电方式：USB TypeC（DC: 5V）</p></li>
+<li><p>处理器: K210，RISC-V 64 位双核 CPU，主频：400MHz；具备卷积人工神经网络硬件加速器 KPU，可高性能进行卷积人工神经网络运算。</p></li>
+<li><p>存储：Flash：8MiB; SRAM：8MiB; 支持SD卡拓展</p></li>
+<li><p>图像传感器：200万像素彩色摄像头</p></li>
+<li><p>显示屏：2.0英寸，分辨率240*320，IPS全视角彩色显示屏</p></li>
+<li><dl class="simple">
+<dt>板载功能：</dt><dd><ul>
+<li><ol class="arabic simple">
+<li><p>三颗可编程全彩LED</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>两颗白光LED</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>两个按键</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>无源蜂鸣器</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>三轴陀螺仪，三轴加速度计</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="6">
+<li><p>光照强度传感器</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="7">
+<li><p>非特定人语音识别模块</p></li>
+</ol>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<ul class="simple">
+<li><p>拓展接口：Grove(UART/I2C/GPIO)</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>入门使用<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>点击下载
+<a class="reference external" href="https://pan.baidu.com/s/1aj5JFqdzW-t58mJ5YncZFw">相关资料</a>
+提取码：3qo0 。</p>
+<div class="section" id="id4">
+<h3>1. 驱动安装<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>开发板通过 UART 串口转 USB 连接电脑通信，因此需安装驱动 USB 转 UART 串口驱动。</p>
+<p>进入资料下载链接，选择下载驱动（x64对应Windows 64位，x86对应Windows 32位）。打开exe文件安装。</p>
+<p>安装驱动后，通过USB数据线连接开发板，将鼠标移动到我的电脑，右键属性–&gt;设备管理器–&gt;端口(COM和LPT)，可查看到设备连接信息，如下图所示：</p>
+<div class="figure align-default">
+<img alt="_images/连接设备.png" src="_images/连接设备.png" />
+</div>
+</div>
+<div class="section" id="ide">
+<h3>2. 软件安装(IDE)<a class="headerlink" href="#ide" title="永久链接至标题">¶</a></h3>
+<p>下载IDE，根据提示安装即可。IDE安装成功后，打开软件，按下图所示操作，运行第一个程序。</p>
+<div class="figure align-default">
+<img alt="_images/运行程序.png" src="_images/运行程序.png" />
+</div>
+</div>
+<div class="section" id="id5">
+<h3>3. 案例测试<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>如下图所示，输入或复制示例程序到程序编辑框内，点击“运行”，观察。</p>
+<div class="figure align-default">
+<img alt="_images/案例测试.png" src="_images/案例测试.png" />
+</div>
+</div>
+<div class="section" id="id6">
+<h3>4. 固件升级<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>下载固件升级工具，解压进入文件夹，找到并打开”kflash_gui.exe”。按下图所示操作，烧录固件。</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/固件烧录.png"><img alt="_images/固件烧录.png" src="_images/固件烧录.png" style="width: 350px;" /></a>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h2>板载功能使用教程<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="rgb-led">
+<h3>1. RGB LED<a class="headerlink" href="#rgb-led" title="永久链接至标题">¶</a></h3>
+<p>板载三颗RGB全彩LED，每种颜色可实现0~255共256级亮度调节，通过对红(Red)、绿(Green)、蓝(Blue)三个颜色通道的调节可叠加发出多种颜色的光。</p>
+<p>设置 RGB LED 参数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># id：板载灯编号，由左至右为：0，1，2；</span>
+<span class="c1"># r,g,b：为颜色亮度值，取值范围：0~255</span>
+<span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="c1"># 或：</span>
+<span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># tuple类型</span>
+<span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>将设置值输出显示:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>每种颜色的LED共有2^8=256(0~255)个发光等级，即共有2^8^3=16 777 216种颜色组合。通过查找 <a class="reference external" href="https://tool.oschina.net/commons?type=3">RGB颜色对照表</a> 生成自己喜欢的颜色。</p>
+</div>
+<p>示例1：点亮LED</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>       <span class="c1"># 导入模块</span>
+<span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>       <span class="c1"># 将第1个灯设置为红色亮度值为：5</span>
+<span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>      <span class="c1"># 将第2个灯设置为蓝色亮度值为：10</span>
+<span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>     <span class="c1"># 将第3个灯设置为绿色亮度值为：100</span>
+<span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>               <span class="c1"># 输出显示</span>
+</pre></div>
+</div>
+<p>示例2：颜色渐变
+RGB彩虹色渐变算法: <a class="reference external" href="https://www.cnblogs.com/wzdxy/p/5346930.html">https://www.cnblogs.com/wzdxy/p/5346930.html</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wheel</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+    <span class="c1"># 通过改变在0和255之间的每个颜色参数产生彩虹色光谱</span>
+    <span class="c1"># Input a value 0 to 255 to get a color value.</span>
+    <span class="c1"># The colours are a transition r - g - b - back to r.</span>
+    <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="mi">255</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">g</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">85</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pos</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">pos</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="mi">170</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">-=</span> <span class="mi">85</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">pos</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">-=</span> <span class="mi">170</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">255</span> <span class="o">-</span> <span class="n">pos</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">rainbow_cycle</span><span class="p">(</span><span class="n">wait_ms</span><span class="p">):</span>
+    <span class="c1"># 彩虹效果</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">3</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">255</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">pixel_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mi">256</span> <span class="o">//</span> <span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">j</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">wheel</span><span class="p">(</span><span class="n">pixel_index</span> <span class="o">&amp;</span> <span class="mi">255</span><span class="p">))</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="n">wait_ms</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">rainbow_cycle</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="led">
+<h3>2. 白光 LED<a class="headerlink" href="#led" title="永久链接至标题">¶</a></h3>
+<p>后置两颗白光LED，可用于摄像头的背光灯等。可通过编程控制亮度。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>不能单独控制</p>
+</div>
+<p>设置灯亮度:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># brightness 亮度，取值范围: 0~100</span>
+<span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">brightness</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>示例1：呼吸灯</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="nb">dir</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">dir</span> <span class="p">:</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="nb">dir</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">dir</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>3. 蜂鸣器<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<p>无源蜂鸣器，可通过不同频率的信号驱动，发出不同音调的声音。</p>
+<p>蜂鸣器鸣响:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># freq：频率；time_ms：时间，单位为：毫秒</span>
+<span class="n">buzzer</span><span class="o">.</span><span class="n">tone</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">time_ms</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>关闭蜂鸣器:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buzzer</span><span class="o">.</span><span class="n">no_tone</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>示例1：依次发出 Do、Re、Mi、Fa、Sol、La、Si</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tone_list</span> <span class="o">=</span> <span class="p">(</span><span class="mi">289</span><span class="p">,</span> <span class="mi">661</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">786</span><span class="p">,</span> <span class="mi">882</span><span class="p">,</span> <span class="mi">990</span><span class="p">,</span> <span class="mi">1112</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">tone</span><span class="p">(</span><span class="n">tone_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">buzzer</span><span class="o">.</span><span class="n">no_tone</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>4. 按键<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<p>左右两个按键，按下接低电平，弹起接高电平。</p>
+<p>获取按键状态:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 返回布尔值，True：按键按下，False：按键弹起。</span>
+<span class="n">button_left</span><span class="o">.</span><span class="n">is_press</span><span class="p">()</span>
+<span class="n">button_right</span><span class="o">.</span><span class="n">is_press</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>示例1：按键控制开关灯</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span><span class="o">*</span>
+<span class="k">while</span> <span class="p">(</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">button_left</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span> <span class="c1"># 检测到按键按下</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">button_left</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;left button press&quot;</span><span class="p">)</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">button_left</span><span class="o">.</span><span class="n">is_press</span><span class="p">())</span> <span class="p">:</span> <span class="c1"># 等待按键释放</span>
+            <span class="k">pass</span>
+    <span class="k">if</span> <span class="n">button_right</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span> <span class="c1"># 检测到按键按下</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">button_right</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;right button press&quot;</span><span class="p">)</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">button_right</span><span class="o">.</span><span class="n">is_press</span><span class="p">())</span> <span class="p">:</span> <span class="c1"># 等待按键释放</span>
+            <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>5. 光照强度传感器<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p><a class="reference external" href="https://www.cnblogs.com/zlbg/p/4049962.html">https://www.cnblogs.com/zlbg/p/4049962.html</a></p>
+<p>光照强度传感器可检测光照强度，测量范围：1~65535lx(勒克斯)</p>
+<p>读取环境光照强度值:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 返回光照强度，单位：lx(勒克斯)</span>
+<span class="n">light</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>示例1：读取并输出光照强度</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span><span class="o">*</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">brightness</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;brightness: </span><span class="si">%d</span><span class="s2"> lx&quot;</span><span class="o">%</span><span class="n">brightness</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">brightness</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>  <span class="c1"># 当亮度小于一定值时，打开灯</span>
+        <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>住宅建筑照明标准值</p>
+<div class="figure align-default">
+<img alt="_images/住宅建筑照明标准值.png" src="_images/住宅建筑照明标准值.png" />
+</div>
+</div>
+<div class="section" id="id11">
+<h3>6. 姿态传感器<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>惯性测量单元含三轴加速度计和三轴陀螺仪。</p>
+<p>API:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 读加速度值，单位：m/s^2</span>
+<span class="c1"># axis: &#39;x&#39;, &#39;y&#39;, &#39;z&#39;</span>
+<span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+
+<span class="c1"># 读角速度值，单位：°/S</span>
+<span class="c1"># axis: &#39;x&#39;, &#39;y&#39;, &#39;z&#39;</span>
+<span class="n">imu</span><span class="o">.</span><span class="n">read_gryo</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+
+<span class="c1"># 读姿态角(roll - 横滚角，pitch - 俯仰角，yaw - 偏航角)</span>
+<span class="c1"># sel: &#39;roll&#39;, &#39;pitch&#39;, &#39;yaw&#39;</span>
+<span class="n">imu</span><span class="o">.</span><span class="n">read_attitude</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>示例1：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>7. 语音识别<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>非特定人语音识别</p>
+<p>添加识别关键词</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#str：设别语句的拼音</span>
+<span class="c1">#ret: 识别到关键词时的返回值</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>开始运行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asr</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>读取识别结果</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>安静的环境中可获得较大的识别准确率</p>
+</div>
+<p>示例1：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;hong&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># 添加关键词“红”，返回值为：1</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;lv&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>        <span class="c1"># 添加关键词“绿”，返回值为：2</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;lan&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>        <span class="c1"># 添加关键词“蓝”，返回值为：3</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;kai deng&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># 添加关键词“开灯”，返回值为：4</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;guan deng&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># 添加关键词“关灯”，返回值为：5</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">asr_test</span><span class="p">(</span><span class="n">sel</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">3</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;turn on the light&quot;</span><span class="p">)</span>
+        <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">5</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;turn off the light&quot;</span><span class="p">)</span>
+        <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">asr_test</span><span class="p">(</span><span class="n">asr</span><span class="o">.</span><span class="n">read_res</span><span class="p">())</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>示例2：增加语音唤醒设置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">asr_run</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">res_str</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;我在&#39;</span><span class="p">,</span> <span class="s1">&#39;你说......&#39;</span><span class="p">,</span> <span class="s1">&#39;诶！&#39;</span><span class="p">,</span> <span class="s1">&#39;来啦&#39;</span><span class="p">,</span> <span class="s1">&#39;嗨!&#39;</span><span class="p">)</span>
+
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;hong&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                  <span class="c1"># 添加关键词“红”，返回值为：1</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;lv&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                    <span class="c1"># 添加关键词“绿”，返回值为：2</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;lan&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>                   <span class="c1"># 添加关键词“蓝”，返回值为：3</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;kai deng&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>              <span class="c1"># 添加关键词“开灯”，返回值为：4</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;guan deng&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>             <span class="c1"># 添加关键词“关灯”，返回值为：5</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;xiao ming tong xue&quot;</span><span class="p">,</span> <span class="mi">66</span><span class="p">)</span>   <span class="c1"># 唤醒词</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;tui xia&quot;</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>              <span class="c1"># 退出</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">asr_test</span><span class="p">(</span><span class="n">sel</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">asr_run</span>
+    <span class="k">if</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">66</span><span class="p">:</span>
+        <span class="n">asr_run</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">res_str</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+    <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">65</span><span class="p">:</span>
+        <span class="n">asr_run</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=========== END ===========&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">asr_run</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">2</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">3</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;turn on the light&quot;</span><span class="p">)</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">sel</span> <span class="o">==</span> <span class="mi">5</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;turn off the light&quot;</span><span class="p">)</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="n">rgb</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">asr_test</span><span class="p">(</span><span class="n">asr</span><span class="o">.</span><span class="n">read_res</span><span class="p">())</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>8. 液晶显示屏<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>显示原理
+参数
+IPS全视角
+分辨率：240*320(QVGA)</p>
+<p>API</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 初始化</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">lcd</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+
+<span class="c1"># 设置背光亮度</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">set_backlight</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+
+<span class="c1"># 显示字符</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;hello maixpy&quot;</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
+
+<span class="c1"># 显示图片</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">Auto</span><span class="p">)</span>
+
+<span class="c1"># 清空显示</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+<span class="c1"># 设置显示方向</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">rotation</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">invert</span>
+
+<span class="c1"># 是否镜像显示</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">mirror</span><span class="p">(</span><span class="n">invert</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>示例1：字符串，图片显示</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>9. 摄像头<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>原理
+传感器参数
+200万像素(OV2640)</p>
+<p>API</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重置并初始化摄像头</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">reset</span><span class="p">([</span><span class="n">freq</span><span class="o">=</span><span class="mi">24000000</span><span class="p">,</span> <span class="n">set_regs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dual_buff</span><span class="o">=</span><span class="kc">False</span><span class="p">])</span>
+
+<span class="c1"># 启动或关闭捕获图像功能</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">enable</span><span class="p">)</span>
+
+<span class="c1"># 设置帧大小 VGA, QVGA</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_framesize</span><span class="p">(</span><span class="n">framesize</span><span class="p">[,</span> <span class="n">set_regs</span><span class="o">=</span><span class="kc">True</span><span class="p">])</span>
+
+<span class="c1"># 设置帧格式 RGB565</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_pixformat</span><span class="p">(</span><span class="nb">format</span><span class="p">[,</span> <span class="n">set_regs</span><span class="o">=</span><span class="kc">True</span><span class="p">])</span>
+
+<span class="c1"># 拍照</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
+
+<span class="c1"># 关闭摄像头/切换摄像头</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">enable</span><span class="o">/</span><span class="n">select</span><span class="p">)</span>
+
+<span class="c1"># 跳帧</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">([</span><span class="n">n</span><span class="p">,</span><span class="n">time</span><span class="p">])</span>
+
+<span class="c1"># 对比度</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_contrast</span><span class="p">(</span><span class="n">contrast</span><span class="p">)</span>
+
+<span class="c1"># 亮度</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_brightness</span><span class="p">(</span><span class="n">brightness</span><span class="p">)</span>
+
+<span class="c1"># 饱和度</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_saturation</span><span class="p">(</span><span class="n">saturation</span><span class="p">)</span>
+
+<span class="c1"># 自动增益</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_auto_gain</span><span class="p">(</span><span class="n">enable</span><span class="p">,</span><span class="n">gain_db</span><span class="p">)</span>
+
+<span class="c1"># 垂直镜像</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="n">enable</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>示例1：字符串，图片显示</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>综合测试程序<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span><span class="o">*</span>
+<span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span> <span class="nn">image</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">lcd</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">)</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">YX_LRUD</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>                      <span class="c1"># Reset and initialize the sensor. It will</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>             <span class="c1"># run automatically, call sensor.run(0) to stop</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_pixformat</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">RGB565</span><span class="p">)</span> <span class="c1"># Set pixel format to RGB565 (or GRAYSCALE)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_framesize</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">QVGA</span><span class="p">)</span>   <span class="c1"># Set frame size to QVGA (320x240)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>      <span class="c1"># Wait for settings take effect.</span>
+<span class="n">clock</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>                <span class="c1"># Create a clock object to track the FPS.</span>
+
+<span class="k">while</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>                    <span class="c1"># Update the FPS clock.</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>         <span class="c1"># Take a picture and return the image.</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>                <span class="c1"># Display on LCD</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clock</span><span class="o">.</span><span class="n">fps</span><span class="p">())</span>              <span class="c1"># Note: MaixPy&#39;s Cam runs about half as fast when connected</span>
+    <span class="k">if</span> <span class="n">button_left</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">button_left</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">button_left</span><span class="o">.</span><span class="n">is_press</span><span class="p">())</span> <span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">if</span> <span class="n">button_right</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">button_right</span><span class="o">.</span><span class="n">is_press</span><span class="p">():</span>
+            <span class="n">lamp</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">button_right</span><span class="o">.</span><span class="n">is_press</span><span class="p">())</span> <span class="p">:</span>
+            <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id16">
+<h2>更多案例<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to OpenAIE_Docs’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, loki
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
