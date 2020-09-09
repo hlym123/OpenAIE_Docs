@@ -14,7 +14,7 @@ OpenAIE 启蒙 使用说明文档
  
 
 简介
-******************** 
+****************************************************** 
 
 * 供电方式：USB TypeC（DC: 5V）
 * 处理器: K210，RISC-V 64 位双核 CPU，主频：400MHz；具备卷积人工神经网络硬件加速器 KPU，可高性能进行卷积人工神经网络运算。
@@ -32,17 +32,17 @@ OpenAIE 启蒙 使用说明文档
 + 拓展接口：Grove(UART/I2C/GPIO) 
 
  
----------
+------------------------------------------------------
 
 入门使用
-********************
+******************************************************
 
 点击下载
 \ `相关资料 <https://pan.baidu.com/s/1aj5JFqdzW-t58mJ5YncZFw>`_ 
 提取码：3qo0 。
 
 1. 驱动安装
-++++++++++++
+======================================================
 开发板通过 UART 串口转 USB 连接电脑通信，因此需安装驱动 USB 转 UART 串口驱动。
 
 进入资料下载链接，选择下载驱动（x64对应Windows 64位，x86对应Windows 32位）。打开exe文件安装。
@@ -52,49 +52,53 @@ OpenAIE 启蒙 使用说明文档
 .. figure:: 连接设备.png    
 
 2. 软件安装(IDE)
-++++++++++++
+======================================================
 下载IDE，根据提示安装即可。IDE安装成功后，打开软件，按下图所示操作，运行第一个程序。
 
 .. figure:: 运行程序.png      
    
 3. 案例测试
-++++++++++++
+======================================================
 如下图所示，输入或复制示例程序到程序编辑框内，点击“运行”，观察。
 
 .. figure:: 案例测试.png     
 
 
 4. 固件升级
-++++++++++++
+======================================================
 下载固件升级工具，解压进入文件夹，找到并打开"kflash_gui.exe"。按下图所示操作，烧录固件。
 
 .. figure:: 固件烧录.png  
    :width: 350px
    :align: center
 
----------
+------------------------------------------------------
 
 板载功能使用教程 
-********************
+******************************************************
 
 1. RGB LED
-++++++++++++
+======================================================
 
 板载三颗RGB全彩LED，每种颜色可实现0~255共256级亮度调节，通过对红(Red)、绿(Green)、蓝(Blue)三个颜色通道的调节可叠加发出多种颜色的光。
 
 ::
 
-设置 RGB LED 参数::
+设置 RGB LED 参数
+::
 
-    # id：板载灯编号，由左至右为：0，1，2；
-    # r,g,b：为颜色亮度值，取值范围：0~255 
+    ''' 
+     id -- 板载灯编号，由左至右为：0，1，2；
+     r, g, b -- 颜色亮度值，取值范围：0~255 
+    '''
     rgb.set(id, (r, g, b)) 
     
     # 或：
     color = (r, g, b)  # tuple类型 
     rgb.set(id, color)  
 
-将设置值输出显示::
+将设置值输出显示
+::
 
     rgb.display()  
 
@@ -102,15 +106,22 @@ OpenAIE 启蒙 使用说明文档
 
 示例1：点亮LED
 ::
-    from openaie import *       # 导入模块
+
+    from openaie import rgb     # 导入模块
+    
     rgb.set(0, (5, 0, 0))       # 将第1个灯设置为红色亮度值为：5
     rgb.set(1, (0, 10, 0))      # 将第2个灯设置为蓝色亮度值为：10
-    rgb.set(2, (0, 0, 100))     # 将第3个灯设置为绿色亮度值为：100
+    rgb.set(2, (0, 0, 20))      # 将第3个灯设置为绿色亮度值为：100
     rgb.display()               # 输出显示
 
 示例2：颜色渐变
+
 RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
 ::
+
+    import time
+    from openaie import rgb   
+    
     def wheel(pos):
         # 通过改变在0和255之间的每个颜色参数产生彩虹色光谱
         # Input a value 0 to 255 to get a color value.
@@ -146,23 +157,25 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
     while True:
         rainbow_cycle(10)    
         
- 
-
 2. 白光 LED
-++++++++++++
+======================================================
 
 后置两颗白光LED，可用于摄像头的背光灯等。可通过编程控制亮度。
 
 .. Note:: 不能单独控制
 
-设置灯亮度::
+设置灯亮度
+::
 
-    # brightness 亮度，取值范围: 0~100
+    '''
+     brightness -- 亮度，取值范围: 0~100
+    '''
     lamp.set(brightness) 
     
 示例1：呼吸灯
 ::
-    from openaie import *
+
+    from openaie import lamp
     import time
 
     dir = True
@@ -175,15 +188,18 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
             time.sleep(0.05)
         dir = not dir
 
- 
 
 3. 蜂鸣器
-++++++++++++
+======================================================
 无源蜂鸣器，可通过不同频率的信号驱动，发出不同音调的声音。
 
-蜂鸣器鸣响::
+蜂鸣器鸣响
+::
 
-    # freq：频率；time_ms：时间，单位为：毫秒
+    ''' 
+     freq -- 频率
+     time_ms -- 时间，单位为：毫秒
+    ''' 
     buzzer.tone(freq, time_ms) 
 
 关闭蜂鸣器::
@@ -192,6 +208,10 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
 
 示例1：依次发出 Do、Re、Mi、Fa、Sol、La、Si
 ::
+
+    import time
+    from openaie import buzzer
+    
     tone_list = (289, 661, 700, 786, 882, 990, 1112)
     for i in range(7):    
         buzzer.tone(tone_list[i])
@@ -199,20 +219,27 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
     buzzer.no_tone()
 
  
-
 4. 按键
-++++++++++++
+======================================================
 左右两个按键，按下接低电平，弹起接高电平。
 
-获取按键状态::
+获取按键状态
+::
 
-    # 返回布尔值，True：按键按下，False：按键弹起。
+    '''
+     返回布尔值：
+         按键按下 -- True 
+         按键弹起 -- False
+    ''' 
     button_left.is_press() 
     button_right.is_press() 
 
 示例1：按键控制开关灯 
 ::
+
+    import time
     from openaie import*
+    
     while (True):
         if button_left.is_press(): # 检测到按键按下
             utime.sleep_ms(10)
@@ -232,23 +259,25 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
  
 
 5. 光照强度传感器
-++++++++++++++++++++++++
+======================================================
 
 https://www.cnblogs.com/zlbg/p/4049962.html
 
 光照强度传感器可检测光照强度，测量范围：1~65535lx(勒克斯)
 
 
-读取环境光照强度值::
+读取环境光照强度值
+::
 
-    # 返回光照强度，单位：lx(勒克斯)
+    '''
+     返回光照强度，单位：lx(勒克斯)
+    ''' 
     light.read() 
-
-
-
  
 示例1：读取并输出光照强度
 ::
+
+    import time
     from openaie import*
     while True:
         brightness = light.read()
@@ -259,63 +288,185 @@ https://www.cnblogs.com/zlbg/p/4049962.html
             lamp.set(0)
         time.sleep_ms(100)
 
+示例2：根据环境光强度调节显示屏亮度
+::
+
+    import time, lcd
+    from openaie import *
+
+    lcd.init(freq=15000000, color=lcd.WHITE)
+    lcd.direction(lcd.YX_LRUD)
+    lcd.draw_string(105, 110, "hello enlighten", lcd.BLUE, lcd.WHITE)
+    while True:
+        brightness = light.read()
+        print(brightness)
+        if brightness < 200:
+            lamp.set_backlight(brightness*0.45)
+        else:
+            lamp.set_backlight(90)
+        time.sleep_ms(50)
+    
 住宅建筑照明标准值
 
 .. figure:: 住宅建筑照明标准值.png
-
-
- 
+    :height: 300 px
+    :width: 500 px
+    :scale: 100 %
+    :alt: alternate text
+    :align: center
 
 6. 姿态传感器
-++++++++++++++++++++++
+======================================================
 
 惯性测量单元含三轴加速度计和三轴陀螺仪。
 
 .. ref:: 飞行器姿态角：https://blog.csdn.net/u012763833/article/details/52396133
 
-API::
+API
+::
 
-    # 读加速度值，单位：m/s^2
-    # axis: 'x', 'y', 'z'
+    ''' 
+     读加速度，单位：m/s^2
+     axis -- 'x', 'y', 'z'
+    ''' 
     imu.read_accel(axis)     
 
-    # 读角速度值，单位：°/S
-    # axis: 'x', 'y', 'z'
+    '''
+     读角速度，单位：°/S
+     axis -- 'x', 'y', 'z'
+    '''
     imu.read_gryo(axis) 
 
-    # 读姿态角(roll - 横滚角，pitch - 俯仰角，yaw - 偏航角)
-    # sel: 'roll', 'pitch', 'yaw' 
+    '''
+     读姿态角(roll - 横滚角，pitch - 俯仰角，yaw - 偏航角)
+     sel -- 'roll', 'pitch', 'yaw' 
+    ''' 
     imu.read_attitude(sel)
 
 示例1：
 ::
+
     import time
     from openaie import *
-	
+
+示例2：水平球
+::
+
+    import time, sensor, image, lcd, math     
+    from openaie import *
+     
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+
+    '''
+     数值映射
+     @param in_min, in_max 输入区间 
+     @param out_min, out_max 输出区间
+    '''
+    def math_map(input, in_min, in_max, out_min, out_max): 
+        output = (input-in_min)*(out_max-out_min)/(in_max-in_min) + out_min # 距离缩放 + 偏差
+        return output
+
+    img = image.Image()
+    while True:
+        accel_x = imu.get_accel('x')
+        accel_y = imu.get_accel('y')
+        cord_x = int(math_map(accel_x, (-9.8), 9.8, 100, -100))
+        cord_y = int(math_map(accel_y, (-9.8), 9.8, -100, 100))
+        
+        img.clear()
+        img.draw_circle(159, 119, 8, color=(0,0,255), thickness=2, fill=False)
+        img.draw_circle(159, 119, 105, color=(0,0,255), thickness=2, fill=False)
+        img.draw_circle(cord_x+159, cord_y+119, 7, color=(255,0,0), thickness=1, fill=True)
+        dis = '(%.1f, %.1f)'%(accel_x, accel_y) 
+        img.draw_string(20, 20, dis, lcd.BLUE)
+        lcd.display(img)
+        
+        if (math.fabs(accel_x) < 0.1) and (math.fabs(accel_y) < 0.1):
+            rgb.set(1, (0,10,0))
+        else:
+            rgb.set(1, (0,0,0))
+        rgb.display()  
+        time.sleep_ms(50)
+        
+示例3：相机水平参考线
+::
+
+    import sensor, lcd, math, time
+    from openaie import*
+
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                     
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)             
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QVGA)
+    sensor.run(1)
+     
+    def trans(angle):
+        cord_x_center = 160
+        cord_y_center = 120
+        radius = 65
+        rad = angle #angle*math.pi / 180 # 转为弧度
+        if angle>0:
+            x0 = int(cord_x_center - radius*math.cos(rad))  
+            y0 = int(cord_y_center - radius*math.sin(rad))  
+            x1 = int(cord_x_center + radius*math.cos(rad))  
+            y1 = int(cord_y_center + radius*math.sin(rad))  
+            img.draw_line(x0, y0, x1, y1, color=(255,0,0), thickness=3)
+        else:
+            img.draw_line(95, 120, 225, 120, color=(0,255,0), thickness=3) 
+
+    while True:
+        img = sensor.snapshot()
+        img.draw_line(50, 120, 90, 120, color=(0,255,0), thickness=3)
+        img.draw_line(230, 120, 270, 120, color=(0,255,0), thickness=3)
+        accel_x = imu.get_accel('x')
+        accel_y = imu.get_accel('y')
+
+        #angle_a = math.acos(accel_y/9.8)*180/math.pi # 转为角度
+        angle_rad = math.acos(accel_y/9.8)
+        angle = int(angle_rad*180/math.pi)
+        if accel_x < 0:
+            angle_rad = math.pi-angle_rad
+        trans(angle_rad)   
+        
+        print(angle)
+        img.draw_string(12, 10, str(angle), color=(0,0,255), scale=2)
+        lcd.display(img) 
+    
+        
     
 7. 语音识别
-++++++++++++++++++++++
+======================================================
 
 非特定人语音识别
 
 添加识别关键词
 ::
-    #str：设别语句的拼音
-    #ret: 识别到关键词时的返回值
+
+    '''
+     str：识别语句的拼音
+     ret: 识别到关键词时的返回值
+    '''
     asr.add_cmd(str, ret)
     
 开始运行
 ::    
+
     asr.run()    
     
 读取识别结果 
-::            
+::    
+        
     asr.read()    
 
 .. Note:: 安静的环境中可获得较大的识别准确率
 
-示例1：
+示例1：语音控制开关灯
 ::
+
     from openaie import *
     import time
     asr.add_cmd("hong", 1)        # 添加关键词“红”，返回值为：1
@@ -353,6 +504,7 @@ API::
 
 示例2：增加语音唤醒设置
 ::
+
     import time
     import random
     from openaie import *
@@ -408,7 +560,7 @@ API::
         time.sleep_ms(100)    
     
 8. 液晶显示屏
-++++++++++++++++++++++ 
+====================================================== 
 显示原理
 参数
 IPS全视角
@@ -417,92 +569,137 @@ IPS全视角
 
 API
 ::
-	# 初始化
-	lcd.init(type=1, freq=15000000, color=lcd.BLACK)
-	
-	# 设置背光亮度
-	lcd.set_backlight(state)
-	
-	# 显示字符 
-	lcd.draw_string(100, 100, "hello maixpy", lcd.RED, lcd.BLACK)
-	
-	# 显示图片
-	lcd.display(image, roi=Auto)
-	
-	# 清空显示
-	lcd.clear()
-	
-	# 设置显示方向
-	lcd.rotation
-	lcd.invert
-	
-	# 是否镜像显示
-	lcd.mirror(invert)
+
+    '''
+     初始化
+    ''' 
+    lcd.init(freq=15000000, color=lcd.BLACK)
+    
+    '''
+     设置背光亮度
+     brightness:0~100
+    '''
+    lcd.set_backlight(brightness)
+    
+    '''
+     显示字符 
+    '''
+    lcd.draw_string(80, 100, "hello enlighten", lcd.RED, lcd.BLACK)
+    
+    '''
+     显示图片
+    '''
+    lcd.display(image, roi=Auto)
+    
+    ''' 
+     清空显示
+    ''' 
+    lcd.clear()
+    
+    '''
+     设置显示方向 0 1 2 3
+    '''
+    lcd.rotation()
+    
+    '''
+     是否镜像显示 
+     invert -- True or False
+    ''' 
+    lcd.mirror(invert)
 
 示例1：字符串，图片显示
 ::
-	from openaie import *
+
+    from openaie import *
 
 
 
 9. 摄像头
-++++++++++++++++++++++   
+======================================================   
 原理
 传感器参数
 200万像素(OV2640)
 
 API
 ::
-	# 重置并初始化摄像头
-	sensor.reset([freq=24000000, set_regs=True, dual_buff=False])
 
-	# 启动或关闭捕获图像功能
-	sensor.run(enable)
+    '''
+     重置并初始化摄像头
+    '''
+    sensor.reset()
 
-	# 设置帧大小 VGA, QVGA
-	sensor.set_framesize(framesize[, set_regs=True])
+    '''
+     启动或关闭捕获图像功能
+     enable -- True or False
+    ''' 
+    sensor.run(enable)
 
-	# 设置帧格式 RGB565
-	sensor.set_pixformat(format[, set_regs=True])
+    '''
+     设置帧大小 
+     framesize -- sensor.QVGA, sensor.QQVGA
+    ''' 
+    sensor.set_framesize(framesize)
 
-	# 拍照
-	sensor.snapshot()
+    '''
+     设置帧格式 
+     format -- sensor.RGB565, sensor.GRAYSCALE
+    ''' 
+    sensor.set_pixformat(format)
 
-	# 关闭摄像头/切换摄像头
-	sensor.shutdown(enable/select)
+    ''' 
+     拍照
+    ''' 
+    sensor.snapshot()
 
-	# 跳帧
-	sensor.skip_frames([n,time])
+    '''
+     跳帧
+    '''
+    sensor.skip_frames([n,time])
 
-	# 对比度
-	sensor.set_contrast(contrast)
+    '''
+     设置对比度
+    ''' 
+    sensor.set_contrast(contrast)
 
-	# 亮度 
-	sensor.set_brightness(brightness)
+    '''
+     设置亮度
+    '''
+    sensor.set_brightness(brightness)
 
-	# 饱和度
-	sensor.set_saturation(saturation)
+    ''' 
+     设置饱和度
+    '''
+    sensor.set_saturation(saturation)
 
-	# 自动增益 
-	sensor.set_auto_gain(enable,gain_db)
+    '''
+     自动增益 
+     enable -- True or False
+    '''
+    sensor.set_auto_gain(enable, gain_db)
 
-	# 垂直镜像
-	sensor.set_hmirror(enable)
+    '''
+     设置水平镜像
+     enable -- True or False
+    '''
+    sensor.set_hmirror(enable)
 
+    '''
+     设置垂直反转
+     enable -- True or False
+    '''
+    sensor.set_vflip(enable)
+    
 示例1：字符串，图片显示
 ::
-	from openaie import *
+
+    from openaie import *
  
 
 
 
 
-
-
-
-
 综合测试程序
-++++++++++++++++++++++
+======================================================
 
 ::
 
@@ -539,10 +736,497 @@ API
                 pass  
 
 
---------- 
+------------------------------------------------------ 
+
+
+机器视觉
+******************************************************
+
+图像
+======================================================
+
+创建返回 image 对象    
+::
+
+    # Creates a new image object from a file at path. Alternatively, you may pass a width, height, and either sensor.BINARY, sensor.GRAYSCALE, or sensor.RGB565 to create new blank image object (initialized to 0 - black).
+    class image.Image(path[, copy_to_fb=False])
+
+保存图片 
+::    
+
+    # Saves a copy of the image to the filesystem at path.
+    image.save(path[, roi[, quality=50]])
+
+清空 
+::
+
+    # image Sets all pixels in the image to zero (very fast).
+    image.clear([mask])
+
+绘图
+======================================================
+画字符串 
+::
+
+    '''
+     x0, y0, x1, y1 -- 起点终点位置
+     text -- 字符串，单个字符尺寸为：8*10像素
+     color -- 颜色，color=(r_val, g_val, b_val)，r_val, g_val, b_val取值范围：0~255
+     scale -- 字体缩放
+    '''
+    image.draw_string(x, y, text, color, scale=1)
+
+画线 
+::
+
+    '''
+     x0, y0, x1, y1 -- 起点终点位置
+     color -- 颜色，color=(r_val, g_val, b_val)，r_val, g_val, b_val取值范围：0~255
+     thickness -- 线宽
+    '''
+    image.draw_line(x0, y0, x1, y1, color, thickness=1)
+
+画圆形 
+::
+
+    '''
+     x, y -- 圆心位置
+     color -- 颜色，color=(r_val, g_val, b_val)，r_val, g_val, b_val取值范围：0~255
+     thickness -- 线宽
+     fill -- 填充
+    '''
+    image.draw_circle(x, y, radius, color, thickness=1, fill=False)
+
+画矩形 
+::
+
+    '''
+     x, y -- 起点位置
+     w, h -- 宽和高
+     color -- 颜色，color=(r_val, g_val, b_val)，r_val, g_val, b_val取值范围：0~255
+     thickness -- 线宽
+     fill -- 填充
+    '''
+    image.draw_rectangle(x, y, w, h, color, thickness=1, fill=False)
+
+画十字 
+::
+
+    '''
+     x, y --  中心位置
+     color -- 颜色，color=(r_val, g_val, b_val)，r_val, g_val, b_val取值范围：0~255
+     size -- 大小
+     thickness -- 线宽
+    '''
+    image.draw_cross(x, y, color, size=5, thickness=1)
+
+画箭头 
+::
+
+    '''
+     x0, y0, x1, y1 -- 起点终点位置
+     color -- 颜色，color=(r_val, g_val, b_val)，r_val, g_val, b_val取值范围：0~255
+     thickness -- 线宽
+    '''
+    image.draw_arrow(x0, y0, x1, y1, color, thickness=1)
+
+示例1：基础绘图测试
+::
+
+    import lcd, image
+    
+    lcd.init(freq=15000000, color=0x0000)
+    
+    # 创建一个空白图像，在图像上绘图，显示
+    img = image.Image()
+    img.draw_string(10, 10, "Enlighten", color=(0,0,100), scale=1)
+    img.draw_line(100, 200, 200, 200, color=(0,100,100), thickness=1)
+    img.draw_rectangle(80, 70, 60, 60, color=(0,100,0), thickness=1, fill=False)
+    img.draw_circle(220, 100, 30, color=(100,0,0), thickness=1, fill=False)
+    img.draw_cross(80, 180, color=(100,0,0), size=10, thickness=1)
+    img.draw_arrow(20, 150, 60, 200, color=(0,100,100), thickness=1)
+    lcd.display(img)
+
+
+二维码识别
+======================================================
+识别二维码
+::
+
+    '''
+     返回 image.qrcode 对象的 List
+    '''
+    image.find_qrcodes()
+
+QRcode对象方法(class image.qrcode)
+::
+
+    '''
+     返回二维码字符串
+    '''
+    qrcode.payload()
+    
+    '''
+     返回二维码边界框参数 
+    '''
+    qrcode.rect() # tuple (x, y, w, h)
+    qrcode.x()    # 矩形框中心点坐标x
+    qrcode.y()    # 矩形框中心点坐标y
+    qrcode.w()    # 矩形框的宽度
+    qrcode.h()    # 矩形框的高度
+    
+   
+示例1：扫描，显示二维码信息
+::
+
+    import sensor, image, lcd
+
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)              
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QVGA)
+    sensor.run(1)
+    sensor.skip_frames(30)
+
+    while True:
+        img = sensor.snapshot()
+        res = img.find_qrcodes()   
+        if len(res) > 0:
+            img.draw_string(10, 10, res[0].payload(), color=(0,0,128), scale=2) 
+            print(res[0].payload()) # 打印 res[0](第一个二维码) 的信息
+        lcd.display(img)
+
+色块查找
+======================================================
+
+::
+
+    image.find_blobs(thresholds[, invert=False[, roi[, x_stride=2[, y_stride=1[, area_threshold=10[, pixels_threshold=10[, merge=False[, margin=0[, threshold_cb=None[, merge_cb=None[, x_hist_bins_max=0[, y_hist_bins_max=0]]]]]]]]]]]])
+
+
+形状识别
+======================================================
+识别矩形
+::
+
+    '''
+     识别矩形，返回 image.rect 对象的 List
+     threshold -- 识别阈值
+    '''
+    image.find_rects(roi=Auto, threshold=10000)
+
+Rectangle对象方法(class image.rect) 
+::   
+
+    '''
+     返回矩形四个角的位置 (x,y) tuples of the 4 corners of the object.
+    '''
+    rect.corners()
+
+    '''
+     返回矩形相关信息  
+    '''
+    rect.rect() # tuple (x, y, w, h)
+    rect.x()    # 矩形框中心点坐标x
+    rect.y()    # 矩形框中心点坐标y
+    rect.w()    # 矩形框的宽度
+    rect.h()    # 矩形框的高度
+
+    '''
+     Returns the rectangle’s magnitude.
+    '''
+    rect.magnitude()
+    
+示例1：识别矩形并作标注 
+::
+
+    import sensor, image, lcd
+
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)              
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QQVGA)
+    sensor.run(1)
+     
+    while(True):
+        img = sensor.snapshot()
+        for r in img.find_rects(threshold = 20000):                     # 识别矩形，阈值 20000
+            img.draw_rectangle(r.rect(), color = (255, 0, 0))           # 画出矩形，颜色为红色
+            for r_c in r.corners():                                     # 找出矩形的四个角
+                img.draw_circle(r_c[0], r_c[1], 5, color = (0, 255, 0)) # 四个角顺时针画圆
+            print(r)
+        lcd.display(img)
+
+识别圆形
+::
+
+    '''
+     识别圆形，返回 image.circle 对象的 List
+     threshold -- 识别阈值 
+     r_min -- 检测圆的最小半径
+     r_max -- 检测圆的最大半径
+    ''' 
+    image.find_circles(roi, threshold=2000, r_min=2, r_max)
+  
+Circle对象方法(class image.circle)  
+::
+
+    '''
+     返回圆相关信息 
+    '''
+    circle.x()  # 圆位置x
+    circle.y()  # 圆位置y
+    circle.r()  # 圆的半径
+
+    '''
+     Returns the circle’s magnitude.
+    '''
+    circle.magnitude()
+
+    
+示例1：识别圆形并作标注  
+::
+
+    import sensor, image, lcd
+
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)              
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QQVGA) # sensor.QVGA 速度慢
+    sensor.run(1)
+     
+    while(True):
+        img = sensor.snapshot() 
+        for c in img.find_circles(threshold = 2500, r_min = 2, r_max = 100):
+            img.draw_circle(c.x(), c.y(), c.r(), color = (255, 255, 0)) 
+            print(c)
+        lcd.display(img)    
+
+AprilTag
+======================================================
+识别 AprilTag 标签
+::
+
+    # Finds all apriltags within the roi and returns a list of image.apriltag objects. Please see the image.apriltag object for more information.
+    '''
+     返回 image.apriltag 对象的 List 
+    '''
+    image.find_apriltags([roi[, families=image.TAG36H11[, fx[, fy[, cx[, cy]]]]]])
+
+    
+AprilTag对象方法(class image.apriltag)
+::
+
+    '''
+     Returns a rectangle tuple (x, y, w, h) for use with other image methods like 
+    '''
+    apriltag.rect()
+    
+    ''' 
+     Returns the numeric id of the apriltag.
+    ''' 
+    apriltag.id()
+
+
+卷积变换
+======================================================
+::
+
+
+
+图像分类
+======================================================
+TODO
+
+
+
+目标检测
+======================================================
+
+导入目标检测模块
+::
+
+    from openaie import object_detection
+
+设置检测目标
+::
+
+    '''
+     target - 'face', 'mask', '20class', ...
+    '''
+    object_detection.set_target('target')
+
+获取检测结果
+::
+
+    '''
+     返回识别结果 
+     img -- 输入图像
+     object_detection.classid() -- 分类结果
+     object_detection.value() -- 可信度(0~1)
+     object_detection.rect() -- 边界框(x, y, w, h)
+    '''
+    object_detection.get_res_from(img)
+
+
+示例1：人脸检测
+::
+
+    import sensor, image, lcd
+    from openaie import object_detection
+
+    # 相关模块初始化
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)              
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QVGA)
+    # 开始运行
+    sensor.run(1)
+    # 设置检测目标为“人脸”
+    object_detection.set_target('face')
+    
+    while(True):
+        img = sensor.snapshot()
+        code = object_detection.get_res_from(img)
+        if code:
+            print(len(code))
+            for item in code:
+                img.draw_rectangle(item.rect())
+                text = 'face %.1f%%'% (item.value()*100)
+                img.draw_string(item.x(), item.y(), text, color=(0,255,0), scale=1) 
+        lcd.display(img)
+
+示例2：口罩检测
+::
+
+    import sensor, image, lcd, time
+    from openaie import object_detection
+
+    # 颜色定义
+    color_r = (255, 0, 0)
+    color_g = (0, 255, 0)
+    color_b = (0, 0, 255)
+
+    # 相关模块初始化
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)              
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QVGA)
+    # 传感器开始运行
+    sensor.run(1)
+    # 设置检测目标为“口罩”
+    object_detection.set_target('mask')
+     
+    clock = time.clock()
+    while (True):
+        clock.tick()
+        img = sensor.snapshot()
+        code = object_detection.get_res_from(img)
+        if code:
+            num_res = len(code)
+            for item in code:
+                confidence = float(item.value()) # 可信度
+                item_rol = item.rect()           # 边界框参数
+                class_id = int(item.classid())   # 分类结果
+                # 识别可信度较低，不判断是否戴口罩
+                if confidence < 0.52:
+                    img.draw_rectangle(item_rol, color=color_b, tickness=4)
+                # 戴口罩
+                if class_id == 1 and confidence > 0.65:
+                    img.draw_rectangle(item_rol, color_g, tickness=4)
+                    if num_res == 1: 
+                        text = 'mask %.1f%%'% (confidence*100)
+                        img.draw_string(10, 5, text, color=color_g, scale=2)
+                # 没有戴口罩
+                else:
+                    img.draw_rectangle(item_rol, color=color_r, tickness=4)
+                    if num_res == 1:
+                        text = 'no mask %.1f%%'% (confidence*100)
+                        img.draw_string(10, 5, text, color=color_r, scale=2)
+        lcd.display(img)
+        print(clock.fps())
+
+示例3：20分类检测（飞机，自行车，小鸟，船，瓶子，公共汽车，小车，猫，椅子，牛，餐桌，狗，马，摩托车，人，花盆，羊，沙发，火车，电视）
+::
+
+    import sensor, image, lcd, time
+    from openaie import object_detection
+
+    # 相关模块初始化
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)              
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QVGA)
+    # 传感器开始运行
+    sensor.run(1)
+    # 设置检测目标为“20分类”
+    object_detection.set_target('20class')
+     
+    lables_list = ['aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 
+                   'bus', 'car', 'cat', 'chair', 'cow', 
+                   'diningtable', 'dog', 'horse', 'motorbike', 'person', 
+                   'pottedplant', 'sheep', 'sofa', 'train', 'tvmonitor']
+            
+    while(True):
+        img = sensor.snapshot()
+        code = object_detection.get_res_from(img)
+        if code:
+            for item in code:
+                img.draw_rectangle(item.rect())
+                text = '%s %.1f%%' % (lables_list[item.classid()], (item.value()*100))
+                img.draw_string(item.x(), item.y(), text, color=(255,0,0), scale=1.5)   
+        lcd.display(img)
+
+
+
+------------------------------------------------------
+
 
 更多案例
-********************
+******************************************************
+TODO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
  
  
