@@ -97,26 +97,29 @@
 <li class="toctree-l3"><a class="reference internal" href="#id8">3. 蜂鸣器</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id9">4. 按键</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id10">5. 光照强度传感器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id11">6. 姿态传感器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">7. 语音识别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">8. 液晶显示屏</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">9. 摄像头</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">综合测试程序</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">6. 姿态传感器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">7. 语音识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">8. 液晶显示屏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">9. 摄像头</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">综合测试程序</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">机器视觉</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id17">图像</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">绘图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">二维码识别</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">色块查找</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">机器视觉</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">图像</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">绘图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">颜色识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id21">形状识别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">二维码识别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#apriltag">AprilTag</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">卷积变换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">图像分类</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">目标检测</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">卷积变换</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id25">更多案例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">人工智能</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id25">1. 图像分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">2. 目标检测</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id27">更多案例</a></li>
 </ul>
 </li>
 </ul>
@@ -443,18 +446,18 @@
 </div>
 <div class="section" id="id10">
 <h3>5. 光照强度传感器<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<p><a class="reference external" href="https://www.cnblogs.com/zlbg/p/4049962.html">https://www.cnblogs.com/zlbg/p/4049962.html</a></p>
+<p><a class="reference external" href="https://www.cnblogs.com/zlbg/p/4049962.html">光照强度</a></p>
 <p>光照强度传感器可检测光照强度，测量范围：1~65535lx(勒克斯)</p>
-<p>读取环境光照强度值</p>
+<p>读取光照强度</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 返回光照强度，单位：lx(勒克斯)</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">light</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>示例1：读取并输出光照强度</p>
+<p>示例1：光控灯</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span><span class="o">*</span>
+<span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="n">light</span><span class="p">,</span> <span class="n">lamp</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">brightness</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;brightness: </span><span class="si">%d</span><span class="s2"> lx&quot;</span><span class="o">%</span><span class="n">brightness</span><span class="p">)</span>
@@ -476,7 +479,7 @@
     <span class="n">brightness</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">brightness</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">brightness</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="n">lamp</span><span class="o">.</span><span class="n">set_backlight</span><span class="p">(</span><span class="n">brightness</span><span class="o">*</span><span class="mf">0.45</span><span class="p">)</span>
+        <span class="n">lamp</span><span class="o">.</span><span class="n">set_backlight</span><span class="p">(</span><span class="n">brightness</span><span class="o">*</span><span class="mf">0.45</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">lamp</span><span class="o">.</span><span class="n">set_backlight</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
@@ -487,10 +490,10 @@
 <a class="reference internal image-reference" href="_images/住宅建筑照明标准值.png"><img alt="alternate text" src="_images/住宅建筑照明标准值.png" style="width: 500.0px; height: 300.0px;" /></a>
 </div>
 </div>
-<div class="section" id="id11">
-<h3>6. 姿态传感器<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id12">
+<h3>6. 姿态传感器<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>惯性测量单元含三轴加速度计和三轴陀螺仪。</p>
-<p>API</p>
+<p>编程方法：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 读加速度，单位：m/s^2</span>
 <span class="sd"> axis -- &#39;x&#39;, &#39;y&#39;, &#39;z&#39;</span>
@@ -507,12 +510,37 @@
 <span class="sd"> 读姿态角(roll - 横滚角，pitch - 俯仰角，yaw - 偏航角)</span>
 <span class="sd"> sel -- &#39;roll&#39;, &#39;pitch&#39;, &#39;yaw&#39;</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">imu</span><span class="o">.</span><span class="n">read_attitude</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+<span class="c1"># TODO...</span>
+<span class="c1"># imu.read_attitude(sel)</span>
 </pre></div>
 </div>
-<p>示例1：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+<p>示例1：数据读取显示</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">lcd</span><span class="o">,</span> <span class="nn">image</span>
+<span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="n">imu</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">YX_LRUD</span><span class="p">)</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">Image</span><span class="p">()</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">accel_x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">accel_y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">accel_z</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+    <span class="n">gyro_x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_gyro</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">gyro_y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_gyro</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">gyro_z</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_gyro</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_arrow</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">230</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_arrow</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_arrow</span><span class="p">(</span><span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;accel x: </span><span class="si">%.1f</span><span class="s2"> m/s^2&quot;</span> <span class="o">%</span> <span class="n">accel_x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;accel y: </span><span class="si">%.1f</span><span class="s2"> m/s^2&quot;</span> <span class="o">%</span> <span class="n">accel_y</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;accel z: </span><span class="si">%.1f</span><span class="s2"> m/s^2&quot;</span> <span class="o">%</span> <span class="n">accel_z</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;gyro x: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">gyro_x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;gyro y: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">gyro_y</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;gyro z: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">gyro_z</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>示例2：水平球</p>
@@ -533,11 +561,10 @@
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">Image</span><span class="p">()</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">accel_x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">get_accel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="n">accel_y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">get_accel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">accel_x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">accel_y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
     <span class="n">cord_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math_map</span><span class="p">(</span><span class="n">accel_x</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">9.8</span><span class="p">),</span> <span class="mf">9.8</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">))</span>
     <span class="n">cord_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math_map</span><span class="p">(</span><span class="n">accel_y</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">9.8</span><span class="p">),</span> <span class="mf">9.8</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-
     <span class="n">img</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="n">img</span><span class="o">.</span><span class="n">draw_circle</span><span class="p">(</span><span class="mi">159</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">img</span><span class="o">.</span><span class="n">draw_circle</span><span class="p">(</span><span class="mi">159</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -545,8 +572,7 @@
     <span class="n">dis</span> <span class="o">=</span> <span class="s1">&#39;(</span><span class="si">%.1f</span><span class="s1">, </span><span class="si">%.1f</span><span class="s1">)&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">accel_x</span><span class="p">,</span> <span class="n">accel_y</span><span class="p">)</span>
     <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">dis</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">BLUE</span><span class="p">)</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">accel_x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">accel_y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">accel_x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">accel_y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.2</span><span class="p">):</span>
         <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">rgb</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
@@ -585,8 +611,8 @@
     <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
     <span class="n">img</span><span class="o">.</span><span class="n">draw_line</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">img</span><span class="o">.</span><span class="n">draw_line</span><span class="p">(</span><span class="mi">230</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">accel_x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">get_accel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-    <span class="n">accel_y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">get_accel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">accel_x</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">accel_y</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">read_accel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 
     <span class="c1">#angle_a = math.acos(accel_y/9.8)*180/math.pi # 转为角度</span>
     <span class="n">angle_rad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">accel_y</span><span class="o">/</span><span class="mf">9.8</span><span class="p">)</span>
@@ -601,8 +627,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id12">
-<h3>7. 语音识别<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id13">
+<h3>7. 语音识别<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
 <p>非特定人语音识别</p>
 <p>添加识别关键词</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -627,11 +653,11 @@
 <p>示例1：语音控制开关灯</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;hong&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># 添加关键词“红”，返回值为：1</span>
-<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;lv&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>        <span class="c1"># 添加关键词“绿”，返回值为：2</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;hong&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>       <span class="c1"># 添加关键词“红”，返回值为：1</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;lv&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>         <span class="c1"># 添加关键词“绿”，返回值为：2</span>
 <span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;lan&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>        <span class="c1"># 添加关键词“蓝”，返回值为：3</span>
-<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;kai deng&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1"># 添加关键词“开灯”，返回值为：4</span>
-<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;guan deng&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>    <span class="c1"># 添加关键词“关灯”，返回值为：5</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;kai deng&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># 添加关键词“开灯”，返回值为：4</span>
+<span class="n">asr</span><span class="o">.</span><span class="n">add_cmd</span><span class="p">(</span><span class="s2">&quot;guan deng&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 添加关键词“关灯”，返回值为：5</span>
 <span class="n">asr</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">asr_test</span><span class="p">(</span><span class="n">sel</span><span class="p">):</span>
@@ -662,8 +688,7 @@
 </pre></div>
 </div>
 <p>示例2：增加语音唤醒设置</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
 
 <span class="n">asr_run</span> <span class="o">=</span> <span class="kc">False</span>
@@ -718,13 +743,13 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id13">
-<h3>8. 液晶显示屏<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id14">
+<h3>8. 液晶显示屏<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>显示原理
 参数
 IPS全视角
 分辨率：240*320(QVGA)</p>
-<p>API</p>
+<p>编程方法：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 初始化</span>
 <span class="sd">&#39;&#39;&#39;</span>
@@ -764,16 +789,17 @@ IPS全视角
 </pre></div>
 </div>
 <p>示例1：字符串，图片显示</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO...</span>
+<span class="c1"># from openaie import *</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id14">
-<h3>9. 摄像头<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id15">
+<h3>9. 摄像头<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 <p>原理
 传感器参数
 200万像素(OV2640)</p>
-<p>API</p>
+<p>编程方法：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 重置并初始化摄像头</span>
 <span class="sd">&#39;&#39;&#39;</span>
@@ -841,13 +867,27 @@ IPS全视角
 <span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="n">enable</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>示例1：字符串，图片显示</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="o">*</span>
+<p>示例1：视频拍摄显示</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span><span class="nn">lcd</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">)</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">YX_LRUD</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_pixformat</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">RGB565</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_framesize</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">QVGA</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
+        <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id15">
-<h3>综合测试程序<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id16">
+<h3>综合测试程序<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utime</span>
 <span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span><span class="o">*</span>
 <span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span> <span class="nn">image</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">lcd</span>
@@ -884,28 +924,38 @@ IPS全视角
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id16">
-<h2>机器视觉<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id17">
-<h3>图像<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<h2>机器视觉<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id18">
+<h3>图像<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
 <p>创建返回 image 对象</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creates a new image object from a file at path. Alternatively, you may pass a width, height, and either sensor.BINARY, sensor.GRAYSCALE, or sensor.RGB565 to create new blank image object (initialized to 0 - black).</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">  Creates a new image object from a file at path. Alternatively, you may pass a width, height, and either sensor.BINARY, sensor.GRAYSCALE, or sensor.RGB565 to create new blank image object (initialized to 0 - black).</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="k">class</span> <span class="nc">image</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">path</span><span class="p">[,</span> <span class="n">copy_to_fb</span><span class="o">=</span><span class="kc">False</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>保存图片</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Saves a copy of the image to the filesystem at path.</span>
+<p>保存图像</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> Saves a copy of the image to the filesystem at path.</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">[,</span> <span class="n">roi</span><span class="p">[,</span> <span class="n">quality</span><span class="o">=</span><span class="mi">50</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>清空</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># image Sets all pixels in the image to zero (very fast).</span>
+<p>清空图像</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> image Sets all pixels in the image to zero (very fast).</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="n">image</span><span class="o">.</span><span class="n">clear</span><span class="p">([</span><span class="n">mask</span><span class="p">])</span>
 </pre></div>
 </div>
+<p>示例1：打开显示图像</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO...</span>
+</pre></div>
 </div>
-<div class="section" id="id18">
-<h3>绘图<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id19">
+<h3>绘图<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <p>画字符串</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> x0, y0, x1, y1 -- 起点终点位置</span>
@@ -982,57 +1032,78 @@ IPS全视角
 </pre></div>
 </div>
 </div>
-<div class="section" id="id19">
-<h3>二维码识别<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
-<p>识别二维码</p>
+<div class="section" id="id20">
+<h3>颜色识别<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<p>LAB颜色阈值</p>
+<ul class="simple">
+<li><p>L – 亮度</p></li>
+<li><p>A – 从绿色到红色的分量</p></li>
+<li><p>B – 从蓝色到黄色的分量</p></li>
+</ul>
+<p>识别色块</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> 返回 image.qrcode 对象的 List</span>
+<span class="sd"> 识别色块, 返回 image.blob 对象 List</span>
+<span class="sd"> thresholds -- LAB颜色阈值 (l_min, l_max, a_min, a_max, b_min, b_max)</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">image</span><span class="o">.</span><span class="n">find_qrcodes</span><span class="p">()</span>
+<span class="n">image</span><span class="o">.</span><span class="n">find_blobs</span><span class="p">([</span><span class="n">thresholds</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>QRcode对象方法(class image.qrcode)</p>
+<p>Blob对象方法(class image.blob)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> 返回二维码字符串</span>
+<span class="sd"> Returns a list of 4 (x,y) tuples of the 4 corners of the object.</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">qrcode</span><span class="o">.</span><span class="n">payload</span><span class="p">()</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">corners</span><span class="p">()</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> 返回二维码边界框参数</span>
+<span class="sd"> 返回矩形框参数</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">qrcode</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span> <span class="c1"># tuple (x, y, w, h)</span>
-<span class="n">qrcode</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>    <span class="c1"># 矩形框中心点坐标x</span>
-<span class="n">qrcode</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>    <span class="c1"># 矩形框中心点坐标y</span>
-<span class="n">qrcode</span><span class="o">.</span><span class="n">w</span><span class="p">()</span>    <span class="c1"># 矩形框的宽度</span>
-<span class="n">qrcode</span><span class="o">.</span><span class="n">h</span><span class="p">()</span>    <span class="c1"># 矩形框的高度</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span>     <span class="c1"># tuple (x, y, w, h)</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>        <span class="c1"># 矩形框起点坐标x</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>        <span class="c1"># 矩形框起点坐标y</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">w</span><span class="p">()</span>        <span class="c1"># 矩形框的宽度</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">h</span><span class="p">()</span>        <span class="c1"># 矩形框的高度</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">cx</span><span class="p">()</span>       <span class="c1"># 矩形框中心点坐标x</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">cy</span><span class="p">()</span>       <span class="c1"># 矩形框中心点坐标y</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">     返回色块内像素点</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<span class="n">blob</span><span class="o">.</span><span class="n">pixels</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>示例1：扫描，显示二维码信息</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span> <span class="nn">image</span><span class="o">,</span> <span class="nn">lcd</span>
+<p>示例1：寻找最大的色块</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span> <span class="nn">lcd</span><span class="o">,</span> <span class="nn">image</span>
 
-<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">find_max_blobs</span><span class="p">(</span><span class="n">blobs</span><span class="p">):</span>
+    <span class="n">max_size</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="n">blobs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">blob</span><span class="o">.</span><span class="n">pixels</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">max_size</span><span class="p">:</span>
+            <span class="n">max_blob</span> <span class="o">=</span> <span class="n">blob</span>
+            <span class="n">max_size</span> <span class="o">=</span> <span class="n">blob</span><span class="o">.</span><span class="n">pixels</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">max_blob</span>
+
+<span class="c1"># LAB颜色阈值</span>
+<span class="n">lab_threshold_red</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">127</span><span class="p">,</span> <span class="mi">127</span><span class="p">)</span>
+<span class="n">lab_threshold_green</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">114</span><span class="p">,</span> <span class="o">-</span><span class="mi">41</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="o">-</span><span class="mi">77</span><span class="p">)</span>
+<span class="n">lab_threshold_blue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">128</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="o">-</span><span class="mi">128</span><span class="p">,</span> <span class="o">-</span><span class="mi">31</span><span class="p">)</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">lcd</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">YX_LRUD</span><span class="p">)</span>
 <span class="n">sensor</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">sensor</span><span class="o">.</span><span class="n">set_pixformat</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">RGB565</span><span class="p">)</span>
 <span class="n">sensor</span><span class="o">.</span><span class="n">set_framesize</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">QVGA</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">sensor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">find_qrcodes</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">128</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span><span class="p">())</span> <span class="c1"># 打印 res[0](第一个二维码) 的信息</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">find_blobs</span><span class="p">([</span><span class="n">lab_threshold_blue</span><span class="p">])</span> <span class="c1"># 识别蓝色</span>
+    <span class="k">if</span> <span class="n">res</span><span class="p">:</span>
+        <span class="nb">max</span> <span class="o">=</span> <span class="n">find_max_blobs</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">draw_rectangle</span><span class="p">(</span><span class="nb">max</span><span class="o">.</span><span class="n">rect</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">((</span><span class="nb">max</span><span class="o">.</span><span class="n">x</span><span class="p">()</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="nb">max</span><span class="o">.</span><span class="n">y</span><span class="p">()</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.3</span><span class="p">)</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id20">
-<h3>色块查找<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">find_blobs</span><span class="p">(</span><span class="n">thresholds</span><span class="p">[,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">False</span><span class="p">[,</span> <span class="n">roi</span><span class="p">[,</span> <span class="n">x_stride</span><span class="o">=</span><span class="mi">2</span><span class="p">[,</span> <span class="n">y_stride</span><span class="o">=</span><span class="mi">1</span><span class="p">[,</span> <span class="n">area_threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">[,</span> <span class="n">pixels_threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">[,</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">[,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">[,</span> <span class="n">threshold_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">[,</span> <span class="n">merge_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">[,</span> <span class="n">x_hist_bins_max</span><span class="o">=</span><span class="mi">0</span><span class="p">[,</span> <span class="n">y_hist_bins_max</span><span class="o">=</span><span class="mi">0</span><span class="p">]]]]]]]]]]]])</span>
 </pre></div>
 </div>
 </div>
@@ -1040,7 +1111,7 @@ IPS全视角
 <h3>形状识别<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 <p>识别矩形</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> 识别矩形，返回 image.rect 对象的 List</span>
+<span class="sd"> 识别矩形，返回 image.rect 对象 List</span>
 <span class="sd"> threshold -- 识别阈值</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">image</span><span class="o">.</span><span class="n">find_rects</span><span class="p">(</span><span class="n">roi</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
@@ -1056,8 +1127,8 @@ IPS全视角
 <span class="sd"> 返回矩形相关信息</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">rect</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span> <span class="c1"># tuple (x, y, w, h)</span>
-<span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>    <span class="c1"># 矩形框中心点坐标x</span>
-<span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>    <span class="c1"># 矩形框中心点坐标y</span>
+<span class="n">rect</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标x</span>
+<span class="n">rect</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标y</span>
 <span class="n">rect</span><span class="o">.</span><span class="n">w</span><span class="p">()</span>    <span class="c1"># 矩形框的宽度</span>
 <span class="n">rect</span><span class="o">.</span><span class="n">h</span><span class="p">()</span>    <span class="c1"># 矩形框的高度</span>
 
@@ -1091,7 +1162,7 @@ IPS全视角
 </div>
 <p>识别圆形</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> 识别圆形，返回 image.circle 对象的 List</span>
+<span class="sd"> 识别圆形，返回 image.circle 对象 List</span>
 <span class="sd"> threshold -- 识别阈值</span>
 <span class="sd"> r_min -- 检测圆的最小半径</span>
 <span class="sd"> r_max -- 检测圆的最大半径</span>
@@ -1103,8 +1174,8 @@ IPS全视角
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 返回圆相关信息</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">circle</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>  <span class="c1"># 圆位置x</span>
-<span class="n">circle</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>  <span class="c1"># 圆位置y</span>
+<span class="n">circle</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>  <span class="c1"># 圆心位置x</span>
+<span class="n">circle</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>  <span class="c1"># 圆心位置y</span>
 <span class="n">circle</span><span class="o">.</span><span class="n">r</span><span class="p">()</span>  <span class="c1"># 圆的半径</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
@@ -1134,56 +1205,199 @@ IPS全视角
 </pre></div>
 </div>
 </div>
+<div class="section" id="id22">
+<h3>二维码识别<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<p>识别二维码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> 返回 image.qrcode 对象 List</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">image</span><span class="o">.</span><span class="n">find_qrcodes</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>QRcode对象方法(class image.qrcode)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> 返回二维码字符串</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">qrcode</span><span class="o">.</span><span class="n">payload</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> 返回二维码边界框参数</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">qrcode</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span> <span class="c1"># tuple (x, y, w, h)</span>
+<span class="n">qrcode</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标x</span>
+<span class="n">qrcode</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标y</span>
+<span class="n">qrcode</span><span class="o">.</span><span class="n">w</span><span class="p">()</span>    <span class="c1"># 矩形框的宽度</span>
+<span class="n">qrcode</span><span class="o">.</span><span class="n">h</span><span class="p">()</span>    <span class="c1"># 矩形框的高度</span>
+</pre></div>
+</div>
+<p>示例1：扫描，显示二维码信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span> <span class="nn">image</span><span class="o">,</span> <span class="nn">lcd</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">)</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">YX_LRUD</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_pixformat</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">RGB565</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_framesize</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">QVGA</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">find_qrcodes</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">draw_string</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">128</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">payload</span><span class="p">())</span> <span class="c1"># 打印 res[0](第一个二维码) 的信息</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="apriltag">
 <h3>AprilTag<a class="headerlink" href="#apriltag" title="永久链接至标题">¶</a></h3>
 <p>识别 AprilTag 标签</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finds all apriltags within the roi and returns a list of image.apriltag objects. Please see the image.apriltag object for more information.</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> 返回 image.apriltag 对象的 List</span>
+<span class="sd"> 返回 image.apriltag 对象 List</span>
+<span class="sd">     families -- image.TAG16H5, image.TAG25H7, image.TAG25H9,</span>
+<span class="sd">             image.TAG36H10, image.TAG36H11, image.ARTOOLKIT</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">image</span><span class="o">.</span><span class="n">find_apriltags</span><span class="p">([</span><span class="n">roi</span><span class="p">[,</span> <span class="n">families</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">TAG36H11</span><span class="p">[,</span> <span class="n">fx</span><span class="p">[,</span> <span class="n">fy</span><span class="p">[,</span> <span class="n">cx</span><span class="p">[,</span> <span class="n">cy</span><span class="p">]]]]]])</span>
+<span class="n">image</span><span class="o">.</span><span class="n">find_apriltags</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">TAG36H11</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>AprilTag对象方法(class image.apriltag)</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> Returns a rectangle tuple (x, y, w, h) for use with other image methods like</span>
+<span class="sd"> Returns a list of 4 (x,y) tuples of the 4 corners of the object.</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">apriltag</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">corners</span><span class="p">()</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> Returns the numeric id of the apriltag.</span>
+<span class="sd"> 返回矩形框参数</span>
+<span class="sd">&#39;&#39;&#39;</span>
+    <span class="n">apriltag</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span> <span class="c1"># tuple (x, y, w, h)</span>
+    <span class="n">apriltag</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标x</span>
+    <span class="n">apriltag</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标y</span>
+    <span class="n">apriltag</span><span class="o">.</span><span class="n">w</span><span class="p">()</span>    <span class="c1"># 矩形框的宽度</span>
+    <span class="n">apriltag</span><span class="o">.</span><span class="n">h</span><span class="p">()</span>    <span class="c1"># 矩形框的高度</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">cx</span><span class="p">()</span>   <span class="c1"># 矩形框中心点坐标x</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">cy</span><span class="p">()</span>   <span class="c1"># 矩形框中心点坐标y</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> 返回标签ID</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">apriltag</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> Returns the numeric family of the apriltag.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">apriltag</span><span class="o">.</span><span class="n">family</span><span class="p">()</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">     Returns the quality of the apriltag image (0.0 - 1.0) where 1.0 is the best.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">apriltag</span><span class="o">.</span><span class="n">goodness</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>示例1：AprilTag识别标注</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span> <span class="nn">image</span><span class="o">,</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">lcd</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">)</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">YX_LRUD</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_pixformat</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">RGB565</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_framesize</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">QQVGA</span><span class="p">)</span> <span class="c1"># we run out of memory if the resolution is much bigger...</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">while</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">img</span><span class="o">.</span><span class="n">find_apriltags</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">TAG16H5</span><span class="p">):</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">draw_rectangle</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">rect</span><span class="p">(),</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">draw_cross</span><span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">cx</span><span class="p">(),</span> <span class="n">tag</span><span class="o">.</span><span class="n">cy</span><span class="p">(),</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">tag_info</span> <span class="o">=</span>  <span class="s2">&quot;Tag ID: </span><span class="si">%d</span><span class="s2">, rotation </span><span class="si">%d</span><span class="s2"> (degrees)&quot;</span> <span class="o">%</span>  <span class="p">(</span><span class="n">tag</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="p">(</span><span class="mi">180</span> <span class="o">*</span> <span class="n">tag</span><span class="o">.</span><span class="n">rotation</span><span class="p">())</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">tag_info</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id22">
-<h3>卷积变换<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
-</div>
 <div class="section" id="id23">
-<h3>图像分类<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
-<p>TODO</p>
+<h3>卷积变换<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<p>卷积运算</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> 图像卷积运算</span>
+<span class="sd"> size -- (((size*2)+1)x((size*2)+1) == 卷积核大小)  --&gt; 3x3==1, 5x5==2, 7x7==3, etc.</span>
+<span class="sd"> kernel -- 卷积核</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">image</span><span class="o">.</span><span class="n">morph</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+</pre></div>
 </div>
+<p>示例1：突出图像轮廓</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">lcd</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">15000000</span><span class="p">)</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">YX_LRUD</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_hmirror</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_vflip</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_pixformat</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">RGB565</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">set_framesize</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">QVGA</span><span class="p">)</span>
+<span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="n">kernel_size</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># 3x3==1, 5x5==2, 7x7==3, etc.</span>
+
+<span class="c1"># 卷积核，提取图像垂直边缘特征</span>
+<span class="n">conv1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> \
+         <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> \
+         <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># 卷积核，提取图像水平边缘特征</span>
+<span class="n">conv2</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span> \
+         <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> \
+         <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># 卷积核，提取图像轮廓</span>
+<span class="n">conv3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> \
+         <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> \
+         <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">clock</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">clock</span><span class="p">()</span>
+<span class="k">while</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">clock</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">morph</span><span class="p">(</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">conv3</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">clock</span><span class="o">.</span><span class="n">fps</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
 <div class="section" id="id24">
-<h3>目标检测<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<h2>人工智能<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id25">
+<h3>1. 图像分类<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<p>TODO…</p>
+</div>
+<div class="section" id="id26">
+<h3>2. 目标检测<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
 <p>导入目标检测模块</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openaie</span> <span class="k">import</span> <span class="n">object_detection</span>
 </pre></div>
 </div>
 <p>设置检测目标</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> target - &#39;face&#39;, &#39;mask&#39;, &#39;20class&#39;, ...</span>
+<span class="sd"> target -- &#39;face&#39;, &#39;mask&#39;, &#39;20class&#39;, ...</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">object_detection</span><span class="o">.</span><span class="n">set_target</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>获取检测结果</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd"> 返回识别结果</span>
 <span class="sd"> img -- 输入图像</span>
-<span class="sd"> object_detection.classid() -- 分类结果</span>
-<span class="sd"> object_detection.value() -- 可信度(0~1)</span>
-<span class="sd"> object_detection.rect() -- 边界框(x, y, w, h)</span>
+<span class="sd"> 返回识别结果：</span>
+<span class="sd">     object_detection.classid() -- 分类结果</span>
+<span class="sd">     object_detection.value() -- 可信度(0~1)</span>
+<span class="sd">     object_detection.rect() -- 边界框(x, y, w, h)</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">object_detection</span><span class="o">.</span><span class="n">get_res_from</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
@@ -1305,8 +1519,8 @@ IPS全视角
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id25">
-<h2>更多案例<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id27">
+<h2>更多案例<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h2>
 <p>TODO</p>
 </div>
 </div>

@@ -159,7 +159,6 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
         
 2. 白光 LED
 ======================================================
-
 后置两颗白光LED，可用于摄像头的背光灯等。可通过编程控制亮度。
 
 .. Note:: 不能单独控制
@@ -260,13 +259,11 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
 
 5. 光照强度传感器
 ======================================================
-
-https://www.cnblogs.com/zlbg/p/4049962.html
-
+\ `光照强度 <https://www.cnblogs.com/zlbg/p/4049962.html>`_ 
+        
 光照强度传感器可检测光照强度，测量范围：1~65535lx(勒克斯)
 
-
-读取环境光照强度值
+读取光照强度
 ::
 
     '''
@@ -274,11 +271,11 @@ https://www.cnblogs.com/zlbg/p/4049962.html
     ''' 
     light.read() 
  
-示例1：读取并输出光照强度
+示例1：光控灯
 ::
 
     import time
-    from openaie import*
+    from openaie import light, lamp
     while True:
         brightness = light.read()
         print("brightness: %d lx"%brightness)
@@ -301,7 +298,7 @@ https://www.cnblogs.com/zlbg/p/4049962.html
         brightness = light.read()
         print(brightness)
         if brightness < 200:
-            lamp.set_backlight(brightness*0.45)
+            lamp.set_backlight(brightness*0.45 + 5)
         else:
             lamp.set_backlight(90)
         time.sleep_ms(50)
@@ -322,7 +319,7 @@ https://www.cnblogs.com/zlbg/p/4049962.html
 
 .. ref:: 飞行器姿态角：https://blog.csdn.net/u012763833/article/details/52396133
 
-API
+编程方法：
 ::
 
     ''' 
@@ -340,14 +337,39 @@ API
     '''
      读姿态角(roll - 横滚角，pitch - 俯仰角，yaw - 偏航角)
      sel -- 'roll', 'pitch', 'yaw' 
-    ''' 
-    imu.read_attitude(sel)
+    '''
+    # TODO...
+    # imu.read_attitude(sel)
 
-示例1：
+示例1：数据读取显示
 ::
 
-    import time
-    from openaie import *
+    import time, lcd, image
+    from openaie import imu
+
+    lcd.init(freq=15000000, color=(0,0,0))
+    lcd.direction(lcd.YX_LRUD)
+     
+    img = image.Image()
+    while True:
+        img.clear()
+        accel_x = imu.read_accel('x')
+        accel_y = imu.read_accel('y')
+        accel_z = imu.read_accel('z')
+        gyro_x = imu.read_gyro('x')
+        gyro_y = imu.read_gyro('y')
+        gyro_z = imu.read_gyro('z')
+        img.draw_arrow(160, 160, 230, 160, color=(200,0,0), thickness=2)
+        img.draw_arrow(160, 160, 160, 90, color=(0,200,0), thickness=2)
+        img.draw_arrow(160, 160, 110, 210, color=(0,0,200), thickness=2)
+        img.draw_string(10, 10, ("accel x: %.1f m/s^2" % accel_x), color=(200,0,0), scale=1.5)
+        img.draw_string(10, 30, ("accel y: %.1f m/s^2" % accel_y), color=(0,200,0), scale=1.5)
+        img.draw_string(10, 50, ("accel z: %.1f m/s^2" % accel_z), color=(0,0,200), scale=1.5)
+        img.draw_string(170, 10, ("gyro x: %d" % gyro_x), color=(200,0,0), scale=1.5)
+        img.draw_string(170, 30, ("gyro y: %d" % gyro_y), color=(0,200,0), scale=1.5)
+        img.draw_string(170, 50, ("gyro z: %d" % gyro_z), color=(0,0,200), scale=1.5)
+        lcd.display(img)
+        time.sleep_ms(100) 
 
 示例2：水平球
 ::
@@ -369,11 +391,10 @@ API
 
     img = image.Image()
     while True:
-        accel_x = imu.get_accel('x')
-        accel_y = imu.get_accel('y')
+        accel_x = imu.read_accel('x')
+        accel_y = imu.read_accel('y')
         cord_x = int(math_map(accel_x, (-9.8), 9.8, 100, -100))
         cord_y = int(math_map(accel_y, (-9.8), 9.8, -100, 100))
-        
         img.clear()
         img.draw_circle(159, 119, 8, color=(0,0,255), thickness=2, fill=False)
         img.draw_circle(159, 119, 105, color=(0,0,255), thickness=2, fill=False)
@@ -381,8 +402,7 @@ API
         dis = '(%.1f, %.1f)'%(accel_x, accel_y) 
         img.draw_string(20, 20, dis, lcd.BLUE)
         lcd.display(img)
-        
-        if (math.fabs(accel_x) < 0.1) and (math.fabs(accel_y) < 0.1):
+        if (math.fabs(accel_x) < 0.2) and (math.fabs(accel_y) < 0.2):
             rgb.set(1, (0,10,0))
         else:
             rgb.set(1, (0,0,0))
@@ -422,8 +442,8 @@ API
         img = sensor.snapshot()
         img.draw_line(50, 120, 90, 120, color=(0,255,0), thickness=3)
         img.draw_line(230, 120, 270, 120, color=(0,255,0), thickness=3)
-        accel_x = imu.get_accel('x')
-        accel_y = imu.get_accel('y')
+        accel_x = imu.read_accel('x')
+        accel_y = imu.read_accel('y')
 
         #angle_a = math.acos(accel_y/9.8)*180/math.pi # 转为角度
         angle_rad = math.acos(accel_y/9.8)
@@ -436,16 +456,14 @@ API
         img.draw_string(12, 10, str(angle), color=(0,0,255), scale=2)
         lcd.display(img) 
     
-        
-    
+  
 7. 语音识别
 ======================================================
-
 非特定人语音识别
 
 添加识别关键词
 ::
-
+	
     '''
      str：识别语句的拼音
      ret: 识别到关键词时的返回值
@@ -469,11 +487,11 @@ API
 
     from openaie import *
     import time
-    asr.add_cmd("hong", 1)        # 添加关键词“红”，返回值为：1
-    asr.add_cmd("lv", 2)        # 添加关键词“绿”，返回值为：2
+    asr.add_cmd("hong", 1)       # 添加关键词“红”，返回值为：1
+    asr.add_cmd("lv", 2)         # 添加关键词“绿”，返回值为：2
     asr.add_cmd("lan", 3)        # 添加关键词“蓝”，返回值为：3
-    asr.add_cmd("kai deng", 4)    # 添加关键词“开灯”，返回值为：4
-    asr.add_cmd("guan deng", 5)    # 添加关键词“关灯”，返回值为：5
+    asr.add_cmd("kai deng", 4)   # 添加关键词“开灯”，返回值为：4
+    asr.add_cmd("guan deng", 5)  # 添加关键词“关灯”，返回值为：5
     asr.run()
 
     def asr_test(sel):
@@ -505,8 +523,7 @@ API
 示例2：增加语音唤醒设置
 ::
 
-    import time
-    import random
+    import time, random
     from openaie import *
                      
     asr_run = False 
@@ -567,7 +584,7 @@ IPS全视角
 分辨率：240*320(QVGA)
 
 
-API
+编程方法：
 ::
 
     '''
@@ -610,7 +627,8 @@ API
 示例1：字符串，图片显示
 ::
 
-    from openaie import *
+    # TODO...
+    # from openaie import *
 
 
 
@@ -620,7 +638,7 @@ API
 传感器参数
 200万像素(OV2640)
 
-API
+编程方法：
 ::
 
     '''
@@ -689,13 +707,25 @@ API
     '''
     sensor.set_vflip(enable)
     
-示例1：字符串，图片显示
+示例1：视频拍摄显示
 ::
 
-    from openaie import *
- 
+	import sensor,lcd
 
+	lcd.init(freq=15000000)
+	lcd.direction(lcd.YX_LRUD)
+	sensor.reset()
+	sensor.set_hmirror(False)
+	sensor.set_vflip(False)
+	sensor.set_pixformat(sensor.RGB565)
+	sensor.set_framesize(sensor.QVGA)
+	sensor.run(1)
+	sensor.skip_frames(30)
 
+	while True:
+		img = sensor.snapshot()
+		lcd.display(img)
+	 
 
 
 综合测试程序
@@ -748,21 +778,31 @@ API
 创建返回 image 对象    
 ::
 
-    # Creates a new image object from a file at path. Alternatively, you may pass a width, height, and either sensor.BINARY, sensor.GRAYSCALE, or sensor.RGB565 to create new blank image object (initialized to 0 - black).
+    '''
+      Creates a new image object from a file at path. Alternatively, you may pass a width, height, and either sensor.BINARY, sensor.GRAYSCALE, or sensor.RGB565 to create new blank image object (initialized to 0 - black).
+    '''
     class image.Image(path[, copy_to_fb=False])
 
-保存图片 
+保存图像 
 ::    
 
-    # Saves a copy of the image to the filesystem at path.
+    '''
+     Saves a copy of the image to the filesystem at path.
+    '''
     image.save(path[, roi[, quality=50]])
 
-清空 
+清空图像  
 ::
 
-    # image Sets all pixels in the image to zero (very fast).
+    '''
+     image Sets all pixels in the image to zero (very fast).
+    ''' 
     image.clear([mask])
 
+示例1：打开显示图像
+::
+    # TODO...
+    
 绘图
 ======================================================
 画字符串 
@@ -848,63 +888,83 @@ API
     lcd.display(img)
 
 
-二维码识别
+颜色识别
 ======================================================
-识别二维码
+
+LAB颜色阈值
+
+* L -- 亮度 
+* A -- 从绿色到红色的分量
+* B -- 从蓝色到黄色的分量
+
+识别色块 
 ::
 
     '''
-     返回 image.qrcode 对象的 List
+     识别色块, 返回 image.blob 对象 List
+     thresholds -- LAB颜色阈值 (l_min, l_max, a_min, a_max, b_min, b_max)
     '''
-    image.find_qrcodes()
-
-QRcode对象方法(class image.qrcode)
+    image.find_blobs([thresholds])
+    
+Blob对象方法(class image.blob)
 ::
 
     '''
-     返回二维码字符串
+     Returns a list of 4 (x,y) tuples of the 4 corners of the object. 
     '''
-    qrcode.payload()
+    blob.corners()
     
     '''
-     返回二维码边界框参数 
+     返回矩形框参数
     '''
-    qrcode.rect() # tuple (x, y, w, h)
-    qrcode.x()    # 矩形框中心点坐标x
-    qrcode.y()    # 矩形框中心点坐标y
-    qrcode.w()    # 矩形框的宽度
-    qrcode.h()    # 矩形框的高度
-    
-   
-示例1：扫描，显示二维码信息
+    blob.rect()     # tuple (x, y, w, h)
+    blob.x()        # 矩形框起点坐标x
+    blob.y()        # 矩形框起点坐标y
+    blob.w()        # 矩形框的宽度
+    blob.h()        # 矩形框的高度
+    blob.cx()       # 矩形框中心点坐标x
+    blob.cy()       # 矩形框中心点坐标y
+	
+	'''
+	 返回色块内像素点
+	'''
+    blob.pixels()   
+
+示例1：寻找最大的色块
 ::
 
-    import sensor, image, lcd
+    import sensor, lcd, image
 
-    lcd.init(freq=15000000)
+    def find_max_blobs(blobs):
+        max_size = 0
+        for blob in blobs:
+            if blob.pixels() > max_size:
+                max_blob = blob
+                max_size = blob.pixels()
+        return max_blob
+
+    # LAB颜色阈值
+    lab_threshold_red = (0, 100, 32, 120, -127, 127)
+    lab_threshold_green = (0, 100, -114, -41, 97, -77)
+    lab_threshold_blue = (0, 100, -128, 127, -128, -31)
+
+    lcd.init(freq=15000000, color=(0,0,0))
     lcd.direction(lcd.YX_LRUD)
-    sensor.reset()                      
-    sensor.set_hmirror(False)
-    sensor.set_vflip(False)              
+    sensor.reset()
     sensor.set_pixformat(sensor.RGB565)
     sensor.set_framesize(sensor.QVGA)
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)
     sensor.run(1)
-    sensor.skip_frames(30)
 
     while True:
         img = sensor.snapshot()
-        res = img.find_qrcodes()   
-        if len(res) > 0:
-            img.draw_string(10, 10, res[0].payload(), color=(0,0,128), scale=2) 
-            print(res[0].payload()) # 打印 res[0](第一个二维码) 的信息
+        res = img.find_blobs([lab_threshold_blue]) # 识别蓝色
+        if res:
+            max = find_max_blobs(res)
+            img.draw_rectangle(max.rect(), color=(0,0,255), thickness=2, fill=False)
+            img.draw_string((max.x() + 5), (max.y() + 5), "blue", color=(255,255,255), scale=1.3)
         lcd.display(img)
-
-色块查找
-======================================================
-
-::
-
-    image.find_blobs(thresholds[, invert=False[, roi[, x_stride=2[, y_stride=1[, area_threshold=10[, pixels_threshold=10[, merge=False[, margin=0[, threshold_cb=None[, merge_cb=None[, x_hist_bins_max=0[, y_hist_bins_max=0]]]]]]]]]]]])
 
 
 形状识别
@@ -913,7 +973,7 @@ QRcode对象方法(class image.qrcode)
 ::
 
     '''
-     识别矩形，返回 image.rect 对象的 List
+     识别矩形，返回 image.rect 对象 List
      threshold -- 识别阈值
     '''
     image.find_rects(roi=Auto, threshold=10000)
@@ -930,8 +990,8 @@ Rectangle对象方法(class image.rect)
      返回矩形相关信息  
     '''
     rect.rect() # tuple (x, y, w, h)
-    rect.x()    # 矩形框中心点坐标x
-    rect.y()    # 矩形框中心点坐标y
+    rect.x()    # 矩形框起点坐标x
+    rect.y()    # 矩形框起点坐标y
     rect.w()    # 矩形框的宽度
     rect.h()    # 矩形框的高度
 
@@ -967,7 +1027,7 @@ Rectangle对象方法(class image.rect)
 ::
 
     '''
-     识别圆形，返回 image.circle 对象的 List
+     识别圆形，返回 image.circle 对象 List
      threshold -- 识别阈值 
      r_min -- 检测圆的最小半径
      r_max -- 检测圆的最大半径
@@ -980,8 +1040,8 @@ Circle对象方法(class image.circle)
     '''
      返回圆相关信息 
     '''
-    circle.x()  # 圆位置x
-    circle.y()  # 圆位置y
+    circle.x()  # 圆心位置x
+    circle.y()  # 圆心位置y
     circle.r()  # 圆的半径
 
     '''
@@ -1011,6 +1071,58 @@ Circle对象方法(class image.circle)
             print(c)
         lcd.display(img)    
 
+二维码识别
+======================================================
+识别二维码
+::
+
+    '''
+     返回 image.qrcode 对象 List
+    '''
+    image.find_qrcodes()
+
+QRcode对象方法(class image.qrcode)
+::
+
+    '''
+     返回二维码字符串
+    '''
+    qrcode.payload()
+    
+    '''
+     返回二维码边界框参数 
+    '''
+    qrcode.rect() # tuple (x, y, w, h)
+    qrcode.x()    # 矩形框起点坐标x
+    qrcode.y()    # 矩形框起点坐标y
+    qrcode.w()    # 矩形框的宽度
+    qrcode.h()    # 矩形框的高度
+    
+   
+示例1：扫描，显示二维码信息
+::
+
+    import sensor, image, lcd
+
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)              
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QVGA)
+    sensor.run(1)
+    sensor.skip_frames(30)
+
+    while True:
+        img = sensor.snapshot()
+        res = img.find_qrcodes()   
+        if len(res) > 0:
+            img.draw_string(10, 10, res[0].payload(), color=(0,0,128), scale=2) 
+            print(res[0].payload()) # 打印 res[0](第一个二维码) 的信息
+        lcd.display(img)
+    
+
 AprilTag
 ======================================================
 识别 AprilTag 标签
@@ -1018,38 +1130,134 @@ AprilTag
 
     # Finds all apriltags within the roi and returns a list of image.apriltag objects. Please see the image.apriltag object for more information.
     '''
-     返回 image.apriltag 对象的 List 
+     返回 image.apriltag 对象 List 
+	 families -- image.TAG16H5, image.TAG25H7, image.TAG25H9,
+                 image.TAG36H10, image.TAG36H11, image.ARTOOLKIT
     '''
-    image.find_apriltags([roi[, families=image.TAG36H11[, fx[, fy[, cx[, cy]]]]]])
+    image.find_apriltags(families=image.TAG36H11)
 
     
 AprilTag对象方法(class image.apriltag)
 ::
-
     '''
-     Returns a rectangle tuple (x, y, w, h) for use with other image methods like 
+     Returns a list of 4 (x,y) tuples of the 4 corners of the object. 
     '''
-    apriltag.rect()
-    
+    apriltag.corners()
+	
+    '''
+     返回矩形框参数
+    '''
+	apriltag.rect() # tuple (x, y, w, h)
+	apriltag.x()    # 矩形框起点坐标x
+	apriltag.y()    # 矩形框起点坐标y
+	apriltag.w()    # 矩形框的宽度
+	apriltag.h()    # 矩形框的高度
+    apriltag.cx()   # 矩形框中心点坐标x
+    apriltag.cy()   # 矩形框中心点坐标y	
+	
     ''' 
-     Returns the numeric id of the apriltag.
+     返回标签ID
     ''' 
     apriltag.id()
+	
+	'''
+     Returns the numeric family of the apriltag.
+	'''
+	apriltag.family()
+	
+	'''
+	 Returns the quality of the apriltag image (0.0 - 1.0) where 1.0 is the best.
+	'''
+	apriltag.goodness()
+
+示例1：AprilTag识别标注
+::
+
+    import sensor, image, math, lcd
+
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QQVGA) # we run out of memory if the resolution is much bigger...
+    sensor.set_vflip(0)
+    sensor.set_hmirror(0)
+    sensor.skip_frames(time = 2000)
+    sensor.run(True)
+
+    while(True):
+        img = sensor.snapshot()
+        for tag in img.find_apriltags(families=image.TAG16H5):
+            img.draw_rectangle(tag.rect(), color = (255, 0, 0))
+            img.draw_cross(tag.cx(), tag.cy(), color = (0, 255, 0))
+            tag_info =  "Tag ID: %d, rotation %d (degrees)" %  (tag.id(), (180 * tag.rotation()) / math.pi)
+            print(tag_info)
+        lcd.display(img)
 
 
 卷积变换
 ======================================================
+卷积运算
 ::
 
+    '''
+     图像卷积运算 
+     size -- (((size*2)+1)x((size*2)+1) == 卷积核大小)  --> 3x3==1, 5x5==2, 7x7==3, etc.
+     kernel -- 卷积核
+    '''
+    image.morph(size, kernel)
+
+示例1：突出图像轮廓 
+::
+
+    sensor, image, time, lcd
+
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()                      
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)  
+    sensor.set_pixformat(sensor.RGB565)  
+    sensor.set_framesize(sensor.QVGA)    
+    sensor.skip_frames(time = 500)                 
+
+    kernel_size = 1 # 3x3==1, 5x5==2, 7x7==3, etc.
+
+    # 卷积核，提取图像垂直边缘特征
+    conv1 = [1, 2, 1, \
+             0, 0, 0, \
+             -1, -2, -1]         
+    # 卷积核，提取图像水平边缘特征         
+    conv2 = [-1, 0,  1, \
+             -2, 0,  2, \
+             -1, 0,  1]         
+    # 卷积核，提取图像轮廓 
+    conv3 = [0, 1, 0, \
+             1, -4, 1, \
+             0, 1, 0]        
+
+    clock = time.clock()              
+    while(True):
+        clock.tick()
+        img = sensor.snapshot() 
+        img.morph(kernel_size, conv3) 
+        lcd.display(img)
+        print(clock.fps())
 
 
-图像分类
+------------------------------------------------------ 
+
+
+人工智能
+******************************************************
+
+1. 图像分类
 ======================================================
-TODO
+TODO...
 
 
 
-目标检测
+2. 目标检测
 ======================================================
 
 导入目标检测模块
