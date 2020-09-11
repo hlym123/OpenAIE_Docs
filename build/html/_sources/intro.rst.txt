@@ -8,7 +8,10 @@ OpenAIE 启蒙 使用说明文档
 
     启蒙是OpenAIE系列模块
 
- 
+.. figure:: enlighten_top.png
+    :height: 300 px
+    :width: 360 px
+    :align: center 
     
     
  
@@ -201,7 +204,8 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
     ''' 
     buzzer.tone(freq, time_ms) 
 
-关闭蜂鸣器::
+关停蜂鸣器
+::
 
     buzzer.no_tone()    
 
@@ -463,7 +467,7 @@ RGB彩虹色渐变算法: https://www.cnblogs.com/wzdxy/p/5346930.html
 
 添加识别关键词
 ::
-	
+    
     '''
      str：识别语句的拼音
      ret: 识别到关键词时的返回值
@@ -710,22 +714,22 @@ IPS全视角
 示例1：视频拍摄显示
 ::
 
-	import sensor,lcd
+    import sensor,lcd
 
-	lcd.init(freq=15000000)
-	lcd.direction(lcd.YX_LRUD)
-	sensor.reset()
-	sensor.set_hmirror(False)
-	sensor.set_vflip(False)
-	sensor.set_pixformat(sensor.RGB565)
-	sensor.set_framesize(sensor.QVGA)
-	sensor.run(1)
-	sensor.skip_frames(30)
+    lcd.init(freq=15000000)
+    lcd.direction(lcd.YX_LRUD)
+    sensor.reset()
+    sensor.set_hmirror(False)
+    sensor.set_vflip(False)
+    sensor.set_pixformat(sensor.RGB565)
+    sensor.set_framesize(sensor.QVGA)
+    sensor.run(1)
+    sensor.skip_frames(30)
 
-	while True:
-		img = sensor.snapshot()
-		lcd.display(img)
-	 
+    while True:
+        img = sensor.snapshot()
+        lcd.display(img)
+     
 
 
 综合测试程序
@@ -924,10 +928,10 @@ Blob对象方法(class image.blob)
     blob.h()        # 矩形框的高度
     blob.cx()       # 矩形框中心点坐标x
     blob.cy()       # 矩形框中心点坐标y
-	
-	'''
-	 返回色块内像素点
-	'''
+    
+    '''
+     返回色块内像素点
+    '''
     blob.pixels()   
 
 示例1：寻找最大的色块
@@ -1131,7 +1135,7 @@ AprilTag
     # Finds all apriltags within the roi and returns a list of image.apriltag objects. Please see the image.apriltag object for more information.
     '''
      返回 image.apriltag 对象 List 
-	 families -- image.TAG16H5, image.TAG25H7, image.TAG25H9,
+     families -- image.TAG16H5, image.TAG25H7, image.TAG25H9,
                  image.TAG36H10, image.TAG36H11, image.ARTOOLKIT
     '''
     image.find_apriltags(families=image.TAG36H11)
@@ -1143,32 +1147,32 @@ AprilTag对象方法(class image.apriltag)
      Returns a list of 4 (x,y) tuples of the 4 corners of the object. 
     '''
     apriltag.corners()
-	
+    
     '''
      返回矩形框参数
     '''
-	apriltag.rect() # tuple (x, y, w, h)
-	apriltag.x()    # 矩形框起点坐标x
-	apriltag.y()    # 矩形框起点坐标y
-	apriltag.w()    # 矩形框的宽度
-	apriltag.h()    # 矩形框的高度
+    apriltag.rect() # tuple (x, y, w, h)
+    apriltag.x()    # 矩形框起点坐标x
+    apriltag.y()    # 矩形框起点坐标y
+    apriltag.w()    # 矩形框的宽度
+    apriltag.h()    # 矩形框的高度
     apriltag.cx()   # 矩形框中心点坐标x
-    apriltag.cy()   # 矩形框中心点坐标y	
-	
+    apriltag.cy()   # 矩形框中心点坐标y    
+    
     ''' 
      返回标签ID
     ''' 
     apriltag.id()
-	
-	'''
+    
+    '''
      Returns the numeric family of the apriltag.
-	'''
-	apriltag.family()
-	
-	'''
-	 Returns the quality of the apriltag image (0.0 - 1.0) where 1.0 is the best.
-	'''
-	apriltag.goodness()
+    '''
+    apriltag.family()
+    
+    '''
+     Returns the quality of the apriltag image (0.0 - 1.0) where 1.0 is the best.
+    '''
+    apriltag.goodness()
 
 示例1：AprilTag识别标注
 ::
@@ -1271,7 +1275,7 @@ TODO...
     '''
      target -- 'face', 'mask', '20class', ...
     '''
-    object_detection.set_target('target')
+    object_detection.set_target(target)
 
 获取检测结果
 ::

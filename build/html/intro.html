@@ -191,6 +191,9 @@
 <blockquote>
 <div><p>启蒙是OpenAIE系列模块</p>
 </div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/enlighten_top.png"><img alt="_images/enlighten_top.png" src="_images/enlighten_top.png" style="width: 360px; height: 300px;" /></a>
+</div>
 <div class="section" id="id1">
 <h2>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
@@ -393,7 +396,7 @@
 <span class="n">buzzer</span><span class="o">.</span><span class="n">tone</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">time_ms</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>关闭蜂鸣器:</p>
+<p>关停蜂鸣器</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buzzer</span><span class="o">.</span><span class="n">no_tone</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -881,8 +884,8 @@ IPS全视角
 <span class="n">sensor</span><span class="o">.</span><span class="n">skip_frames</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
-        <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">snapshot</span><span class="p">()</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1065,9 +1068,9 @@ IPS全视角
 <span class="n">blob</span><span class="o">.</span><span class="n">cx</span><span class="p">()</span>       <span class="c1"># 矩形框中心点坐标x</span>
 <span class="n">blob</span><span class="o">.</span><span class="n">cy</span><span class="p">()</span>       <span class="c1"># 矩形框中心点坐标y</span>
 
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">     返回色块内像素点</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> 返回色块内像素点</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="n">blob</span><span class="o">.</span><span class="n">pixels</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1259,7 +1262,7 @@ IPS全视角
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finds all apriltags within the roi and returns a list of image.apriltag objects. Please see the image.apriltag object for more information.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 返回 image.apriltag 对象 List</span>
-<span class="sd">     families -- image.TAG16H5, image.TAG25H7, image.TAG25H9,</span>
+<span class="sd"> families -- image.TAG16H5, image.TAG25H7, image.TAG25H9,</span>
 <span class="sd">             image.TAG36H10, image.TAG36H11, image.ARTOOLKIT</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">image</span><span class="o">.</span><span class="n">find_apriltags</span><span class="p">(</span><span class="n">families</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">TAG36H11</span><span class="p">)</span>
@@ -1274,11 +1277,11 @@ IPS全视角
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 返回矩形框参数</span>
 <span class="sd">&#39;&#39;&#39;</span>
-    <span class="n">apriltag</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span> <span class="c1"># tuple (x, y, w, h)</span>
-    <span class="n">apriltag</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标x</span>
-    <span class="n">apriltag</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标y</span>
-    <span class="n">apriltag</span><span class="o">.</span><span class="n">w</span><span class="p">()</span>    <span class="c1"># 矩形框的宽度</span>
-    <span class="n">apriltag</span><span class="o">.</span><span class="n">h</span><span class="p">()</span>    <span class="c1"># 矩形框的高度</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">rect</span><span class="p">()</span> <span class="c1"># tuple (x, y, w, h)</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">x</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标x</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">y</span><span class="p">()</span>    <span class="c1"># 矩形框起点坐标y</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">w</span><span class="p">()</span>    <span class="c1"># 矩形框的宽度</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">h</span><span class="p">()</span>    <span class="c1"># 矩形框的高度</span>
 <span class="n">apriltag</span><span class="o">.</span><span class="n">cx</span><span class="p">()</span>   <span class="c1"># 矩形框中心点坐标x</span>
 <span class="n">apriltag</span><span class="o">.</span><span class="n">cy</span><span class="p">()</span>   <span class="c1"># 矩形框中心点坐标y</span>
 
@@ -1287,15 +1290,15 @@ IPS全视角
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">apriltag</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
 
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> Returns the numeric family of the apriltag.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">apriltag</span><span class="o">.</span><span class="n">family</span><span class="p">()</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">family</span><span class="p">()</span>
 
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">     Returns the quality of the apriltag image (0.0 - 1.0) where 1.0 is the best.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">apriltag</span><span class="o">.</span><span class="n">goodness</span><span class="p">()</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> Returns the quality of the apriltag image (0.0 - 1.0) where 1.0 is the best.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">apriltag</span><span class="o">.</span><span class="n">goodness</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>示例1：AprilTag识别标注</p>
@@ -1388,7 +1391,7 @@ IPS全视角
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> target -- &#39;face&#39;, &#39;mask&#39;, &#39;20class&#39;, ...</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">object_detection</span><span class="o">.</span><span class="n">set_target</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
+<span class="n">object_detection</span><span class="o">.</span><span class="n">set_target</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>获取检测结果</p>
