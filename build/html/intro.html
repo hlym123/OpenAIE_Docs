@@ -120,6 +120,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id27">更多案例</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id28">相关知识拓展</a></li>
 </ul>
 </li>
 </ul>
@@ -199,7 +200,7 @@
 <ul class="simple">
 <li><p>供电方式：USB TypeC（DC: 5V）</p></li>
 <li><p>处理器: K210，RISC-V 64 位双核 CPU，主频：400MHz；具备卷积人工神经网络硬件加速器 KPU，可高性能进行卷积人工神经网络运算。</p></li>
-<li><p>存储：Flash：8MiB; SRAM：8MiB; 支持SD卡拓展</p></li>
+<li><p>存储：Flash：16MiB; SRAM：8MiB; 支持SD卡拓展</p></li>
 <li><p>图像传感器：200万像素彩色摄像头</p></li>
 <li><p>显示屏：2.0英寸，分辨率240*320，IPS全视角彩色显示屏</p></li>
 <li><dl class="simple">
@@ -799,9 +800,8 @@ IPS全视角
 </div>
 <div class="section" id="id15">
 <h3>9. 摄像头<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
-<p>原理
-传感器参数
-200万像素(OV2640)</p>
+<p>原理</p>
+<p>传感器参数：200万像素(OV2640)</p>
 <p>编程方法：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 重置并初始化摄像头</span>
@@ -1046,9 +1046,11 @@ IPS全视角
 <p>识别色块</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> 识别色块, 返回 image.blob 对象 List</span>
+<span class="sd">     roi -- roi = [x0, y0, x1, y1]</span>
 <span class="sd"> thresholds -- LAB颜色阈值 (l_min, l_max, a_min, a_max, b_min, b_max)</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">image</span><span class="o">.</span><span class="n">find_blobs</span><span class="p">([</span><span class="n">thresholds</span><span class="p">])</span>
+<span class="n">image</span><span class="o">.</span><span class="n">find_blobs</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">x_stride</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">area_threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pixels_threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">merge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">threshold_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">merge_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Blob对象方法(class image.blob)</p>
@@ -1073,6 +1075,19 @@ IPS全视角
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="n">blob</span><span class="o">.</span><span class="n">pixels</span><span class="p">()</span>
 </pre></div>
+</div>
+<p><strong>阈值设置</strong></p>
+<p>方法一：IDE：工具–&gt;机器视觉–&gt;阈值编辑器，按需求选择图像来源。移动滑块至目标检测区域调节为白色，其他区域为黑色，复制“LAB阈值”，如下图所示：</p>
+<div class="figure align-center">
+<img alt="_images/阈值调节.png" src="_images/阈值调节.png" />
+</div>
+<p>方法二：在IDE右下方的“直方图”中选择“LAB颜色空间”，在图像缓冲区中的目标区域点按鼠标拖拽，根据直方图信息填写“LAB阈值”，如下图所示：</p>
+<div class="figure align-center">
+<img alt="_images/阈值调节_直方图.png" src="_images/阈值调节_直方图.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>可在配图区域鼠标右键，选择“在新标签页中打开图片”查看大图。</p>
 </div>
 <p>示例1：寻找最大的色块</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sensor</span><span class="o">,</span> <span class="nn">lcd</span><span class="o">,</span> <span class="nn">image</span>
@@ -1524,6 +1539,12 @@ IPS全视角
 <hr class="docutils" />
 <div class="section" id="id27">
 <h2>更多案例<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="id28">
+<h2>相关知识拓展<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h2>
+<p><strong>图像信息采集</strong>：景物 – 光反射 –&gt; 摄像头(光信号转为电信号) –&gt; 处理器</p>
+<p><strong>颜色空间</strong>：RGB色彩空间，LAB色彩空间，YUV色彩空间，灰度色彩空间</p>
 <p>TODO</p>
 </div>
 </div>

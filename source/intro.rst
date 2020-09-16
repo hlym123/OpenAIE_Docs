@@ -21,7 +21,7 @@ OpenAIE 启蒙 使用说明文档
 
 * 供电方式：USB TypeC（DC: 5V）
 * 处理器: K210，RISC-V 64 位双核 CPU，主频：400MHz；具备卷积人工神经网络硬件加速器 KPU，可高性能进行卷积人工神经网络运算。
-* 存储：Flash：8MiB; SRAM：8MiB; 支持SD卡拓展
+* 存储：Flash：16MiB; SRAM：8MiB; 支持SD卡拓展
 * 图像传感器：200万像素彩色摄像头 
 * 显示屏：2.0英寸，分辨率240*320，IPS全视角彩色显示屏
 * 板载功能：
@@ -639,8 +639,8 @@ IPS全视角
 9. 摄像头
 ======================================================   
 原理
-传感器参数
-200万像素(OV2640)
+
+传感器参数：200万像素(OV2640)
 
 编程方法：
 ::
@@ -906,10 +906,15 @@ LAB颜色阈值
 
     '''
      识别色块, 返回 image.blob 对象 List
+	 roi -- roi = [x0, y0, x1, y1] 左上角坐标(x0,y0)，右下角坐标(x1,y1)
      thresholds -- LAB颜色阈值 (l_min, l_max, a_min, a_max, b_min, b_max)
+	 x_stride -- x方向上检测最小宽度像素值，小于此范围的blob不检测
+	 y_stride -- y方向上检测最小宽度像素值，小于此范围的blob不检测
     '''
     image.find_blobs([thresholds])
-    
+    image.find_blobs(thresholds, roi=Auto, x_stride=2, y_stride=1, invert=False, area_threshold=10, pixels_threshold=10, merge=False, margin=0, threshold_cb=None, merge_cb=None)
+	
+	   
 Blob对象方法(class image.blob)
 ::
 
@@ -933,6 +938,21 @@ Blob对象方法(class image.blob)
      返回色块内像素点
     '''
     blob.pixels()   
+
+**阈值设置**
+
+方法一：IDE：工具-->机器视觉-->阈值编辑器，按需求选择图像来源。移动滑块至目标检测区域调节为白色，其他区域为黑色，复制“LAB阈值”，如下图所示：
+
+.. figure:: 阈值调节.png  
+   :align: center
+
+方法二：在IDE右下方的“直方图”中选择“LAB颜色空间”，在图像缓冲区中的目标区域点按鼠标拖拽，根据直方图信息填写“LAB阈值”，如下图所示：
+
+.. figure:: 阈值调节_直方图.png  
+   :align: center
+
+.. Note:: 可在配图区域鼠标右键，选择“在新标签页中打开图片”查看大图。
+
 
 示例1：寻找最大的色块
 ::
@@ -1414,6 +1434,15 @@ TODO...
 
 更多案例
 ******************************************************
+TODO
+
+
+相关知识拓展
+******************************************************
+**图像信息采集**：景物 -- 光反射 --> 摄像头(光信号转为电信号) --> 处理器
+
+**颜色空间**：RGB色彩空间，LAB色彩空间，YUV色彩空间，灰度色彩空间
+
 TODO
 
 
