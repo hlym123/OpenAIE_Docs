@@ -770,7 +770,7 @@ IPS全视角
     sensor.set_framesize(sensor.QVGA)
     sensor.skip_frames(time = 100)
 
-    object_detection.set_target('20class')
+    object_detection.set_object('20class')
     lables_list = ['aeroplane', 'bicycle', 'bird', 'boat', 'bottle',
                    'bus', 'car', 'cat', 'chair', 'cow',
                    'diningtable', 'dog', 'horse', 'motorbike', 'person',
@@ -1577,6 +1577,7 @@ Haar级联分类器，多个不同的特征检测器组合
 人工智能
 ******************************************************
 
+
 在openaie固件中内置有部分模型
 
 
@@ -1632,7 +1633,7 @@ TODO...
     # 开始运行
     sensor.run(1)
     # 设置检测目标为“人脸”
-    object_detection.set_target('face')
+    object_detection.set_object('face')
     
     while(True):
         img = sensor.snapshot()
@@ -1667,7 +1668,7 @@ TODO...
     # 传感器开始运行
     sensor.run(1)
     # 设置检测目标为“口罩”
-    object_detection.set_target('mask')
+    object_detection.set_object('mask')
      
     clock = time.clock()
     while (True):
@@ -1715,7 +1716,7 @@ TODO...
     # 传感器开始运行
     sensor.run(1)
     # 设置检测目标为“20分类”
-    object_detection.set_target('20class')
+    object_detection.set_object('20class')
      
     lables_list = ['aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 
                    'bus', 'car', 'cat', 'chair', 'cow', 
@@ -1771,6 +1772,23 @@ TODO...
 
 
 ------------------------------------------------------
+ 
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+ 
 
 
 
